@@ -1,0 +1,93 @@
+.body{
+    font-family: 'Playfair Display', serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.main-container{
+  display: flex;
+  justify-content: space-between;
+  border: black 5px solid;
+  min-width: 100%;
+  min-height: 900px;
+  font-family: 'Playfair Display', serif;
+}
+
+.left-panel{
+  display: flex;
+  /* align-items: stretch; */
+  /* justify-content: center; */
+  width: 25%
+}
+.center-panel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%
+}
+.right-panel{
+  display: flex;
+  background-color: yellow;
+  width: 25%
+}
+
+.search{
+background-color: green;
+font-family: 'Playfair Display', serif;
+font-size: 20px;
+}
+
+.article{
+  font-family: 'Playfair Display', serif;
+}
+
+.map{
+  height: 15%;
+  width: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-button{
+  position: absolute;
+  top: 370px;
+  left: 1150px;
+
+  align-self: center;
+
+}
+.title-list{
+
+}
+
+.search-form{
+  position: absolute;
+  top: 370px;
+}
