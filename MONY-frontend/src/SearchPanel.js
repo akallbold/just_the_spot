@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
+import {connect} from "react-redux"
+import {changeSearchTerm, changeUserMapView} from "./actions"
 
 class SearchPanel extends Component {
 
-  handleOnChange = (event) => {
-    this.props.updateSearchTerm(event.target.value)
-  }
-
-  handleViewMyMap = () => {
-    this.props.changeUserMapView()
-  }
 
   render() {
     return (
+
       <div className="left-panel search">
         <p>{`Hello ${this.props.user}`}</p>
         <p>Find the best spots in New York City!</p>
@@ -24,12 +20,20 @@ class SearchPanel extends Component {
 
         <form className="search-form">
           <label>Search</label>
-          <input type="text" value={this.props.searchTerm} onChange={this.handleOnChange}/>
+          <input type="text" value={this.props.searchTerm} onChange={this.props.changeSearchTerm}/>
         </form>
-        <button onClick={this.handleViewMyMap}>View my Map!</button>
+        <button onClick={this.props.changeUserMapView}>View my Map!</button>
       </div>
     );
   }
 }
 
-export default SearchPanel;
+const mapStateToProps = (state) => {
+  return {
+      searchTerm: state.searchTerm,
+      userMapView: state.userMapView,
+      user:state.user
+  }
+}
+
+export default connect(mapStateToProps, {changeSearchTerm, changeUserMapView})(SearchPanel);

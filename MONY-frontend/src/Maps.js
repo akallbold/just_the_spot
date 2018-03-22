@@ -1,73 +1,83 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import Geocode from "react-geocode";
+import {connect} from "react-redux"
+import {fetchCurrentPlaces} from './actions'
 let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
 
-class Maps extends Component {
 
-  state = {
-    currentPlaces:[],
-    updatedPlaces:[]
+class Maps extends React.Component {
+
+  componentDidMount(){
+    // console.log("currentarticle",this.props.currentArticle )
+    console.log("currentplace ",this.props.currentPlaces )
+    this.props.fetchCurrentPlaces(this.props.currentArticle)
   }
 
-  componentDidMount = () => {
-    this.fetchCurrentPlaces(this.props.currentArticle)
-  }
+  // componentWillReceiveProps(nextProps){
+  //   console.log("nextProps", nextProps)
+  //   console.log("mapping array", this.props.currentPlaces)
+  //   nextProps.currentPlaces.map(place => {
+  //     console.log("in props mapping")
+  //      this.props.fetchGeocode(place)
+  //   })
+  // }
 
-  updateInfo = () => {
-    this.state.currentPlaces.map(place => {
-       this.getGeocode(place)
-    })
-  }
+  // updateInfo = () => {
+  //   this.state.currentPlaces.map(place => {
+  //      this.fetchGeocode(place)
+  //   })
+  // }
 
-  createMarkers = () => {
-    return this.state.updatedPlaces.map(place => {
-       return <Marker
-                title={`title ${place.name}`}
-                name={`name ${place.name}`}
-                position={{lat:place.latitude,lng:place.longitude}}
-              />
-    })
-  }
+  // createMarkers = () => {
+  //   return this.props.updatedPlaces.map(place => {
+  //      return <Marker
+  //               title={`title ${place.name}`}
+  //               name={`name ${place.name}`}
+  //               position={{lat:place.latitude,lng:place.longitude}}
+  //             />
+  //   })
+  // }
 
-  fetchCurrentPlaces = (article) => {
-    fetch(`http://localhost:3000/article/${article.id}/places`)
-   .then(response => response.json())
-   .then(data => {
-    this.setState({currentPlaces:data}, () => this.updateInfo())
-    })
-  }
+  // fetchCurrentPlaces = (article) => {
+  //   fetch(`http://localhost:3000/article/${article.id}/places`)
+  //  .then(response => response.json())
+  //  .then(data => {
+  //   this.setState({currentPlaces:data}, () => this.updateInfo())
+  //   })
+  // }
+  //
+  // fetchGeocode = (place) => {
+  //   console.log("in geocode fetch")
+  //   let formattedAddress = place.address.replace(/ /g,"+")
+  //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${formattedAddress}&key=${APIkey}`)
+  //     .then(response=>response.json())
+  //     .then(data => {
+  //       place.address = data.results[0].formatted_address
+  //       place.latitude = data.results[0].geometry.location.lat
+  //       place.longitude = data.results[0].geometry.location.lng
+  //       this.saveGeocode(place)
+  //     })
+  // }
+  //
+  // handleSaveUpdatedPlacetoUser = (places) => {
+  //   this.props.updateUserPlaces(this.state.updatedPlaces)
+  // }
 
-  getGeocode = (place) => {
-    let formattedAddress = place.address.replace(/ /g,"+")
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${formattedAddress}&key=${APIkey}`)
-    .then(response=>response.json())
-    .then(data => {
-      place.address = data.results[0].formatted_address
-      place.latitude = data.results[0].geometry.location.lat
-      place.longitude = data.results[0].geometry.location.lng
-      this.saveGeocode(place)
-    })
-  }
-
-  handleSaveUpdatedPlacetoUser = (places) => {
-    this.props.updateUserPlaces(this.state.updatedPlaces)
-  }
-
-  saveGeocode = (place) => {
-    fetch(`http://localhost:3000/places/${place.id}`, {
-      method:"POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        address:place.address,
-        latitude:place.latitude,
-        longitude:place.longitude
-        })
-    }).then(response => response.json())
-     .then(data => {
-      this.setState({updatedPlaces:[...this.state.updatedPlaces, data]})
-    })
-  }
+  // saveGeocode = (place) => {
+  //   fetch(`http://localhost:3000/places/${place.id}`, {
+  //     method:"POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({
+  //       address:place.address,
+  //       latitude:place.latitude,
+  //       longitude:place.longitude
+  //       })
+  //   }).then(response => response.json())
+  //    .then(data => {
+  //     this.setState({updatedPlaces:[...this.state.updatedPlaces, data]})
+  //   })
+  // }
 
   saveMapToUser = (place) => {
     fetch(`http://localhost:3000/users/${this.props.user.id}/places`, {
@@ -96,16 +106,18 @@ class Maps extends Component {
   //   })
   // }
 
-  handleClick = () => {
-    this.state.updatedPlaces.map(place => {
-      this.saveMapToUser(place)
-    })
-    this.props.changeUserMapView()
-  }
+  // handleClick = () => {
+  //   this.state.updatedPlaces.map(place => {
+  //     this.saveMapToUser(place)
+  //   })
+  //   this.props.changeUserMapView()
+  // }
 
 
   render() {
+
     return (
+
        <div className="right-panel">
          <div className="map">
            <Map
@@ -114,14 +126,25 @@ class Maps extends Component {
              style={{ width: "25%", height: "45%", position: "relative" }}
              className={"map"}
              zoom={10}>
-              {this.createMarkers()}
+              {/* {this.createMarkers()} */}
             </Map>
         </div>
-        <button onClick= {this.handleClick} className="save-button" value="Save Map">Save Map</button>
+        <button onClick= {()=>this.props.saveArticleToUser(this.props.currentArticle)} className="save-button" value="Save Map">Save Map</button>
       </div>
     )
   }
 
 }
 
-export default GoogleApiWrapper({apiKey:APIkey})(Maps)
+const mapStateToProps = (state) => {
+  return {
+    currentPlaces:state.currentPlaces,
+    updatedPlaces:state.updatedPlaces,
+    currentArticle:state.currentArticle
+  }
+
+}
+
+const WrappedContainers = GoogleApiWrapper({
+apiKey:APIkey})
+export default connect(mapStateToProps, { fetchCurrentPlaces })(Maps)

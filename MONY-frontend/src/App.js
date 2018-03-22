@@ -2,32 +2,31 @@ import React, { Component } from 'react';
 import './App.css';
 import Login from "./Login"
 import MainContainer from "./MainContainer"
+import {connect} from "react-redux"
 
 class App extends Component {
 
-  state={
-    user:{name:"anna", id:1}
-  }
-
-  loginUser = (user) => {
-    this.setState({user:user})
-  }
-
-  createElements = () => {
-    if (this.state.user){
-      return <MainContainer user={this.state.user} user={this.state.user}/>
-    } else {
-      return <Login user={this.state.user} loginUser={this.loginUser}/>
-    }
-  }
+  // createElements = () => {
+  //   if (this.props.user){
+  //     return <MainContainer/>
+  //   } else {
+  //     return <Login/>
+  //   }
+  // }
 
   render() {
     return (
       <div className="App">
-        {this.createElements()}
+        <MainContainer/>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user:state.user
+  }
+}
+
+export default connect(mapStateToProps)(App);

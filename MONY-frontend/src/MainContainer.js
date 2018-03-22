@@ -2,79 +2,38 @@ import React, { Component } from 'react';
 import './App.css';
 import Login from "./Login"
 import SearchPanel from "./SearchPanel"
-import TitleList from "./TitleList"
-import Article from "./Article"
-import Maps from "./Maps"
+import ArticleList from "./ArticleList"
+import ArticleContainer from "./ArticleContainer"
 import UserMap from "./UserMap"
+import {connect} from "react-redux"
+import { fetchArticles, fetchPlaces } from "./actions"
 
 class MainContainer extends Component {
-  state = {
-    allArticles: [],
-    allPlaces:[],
-    currentArticle: "",
-    searchTerm: "",
-    userMapView: false,
-    userPlaces: [],
-    userArticles: []
-  }
 
   componentDidMount = () => {
-    this.fetchArticles()
-    this.fetchPlaces()
-  }
-
-  fetchArticles = () => {
-    fetch("http://localhost:3000/articles")
-    .then(response => response.json())
-    .then(data => {
-      this.setState({allArticles:data})
-    })
-  }
-
-  fetchPlaces = () => {
-    fetch("http://localhost:3000/places")
-    .then(response => response.json())
-    .then(data => {
-      this.setState({allPlaces:data})
-    })
-  }
-
-  changeCurrentArticle = (article) => {
-    this.setState({currentArticle:article})
-  }
-
-  updateSearchTerm = (term) =>{
-    this.setState({searchTerm:term})
-  }
-
-  changeUserMapView = () =>{
-    this.setState({userMapView:!this.state.userMapView})
-    if (this.state.currentArticle) {
-    this.setState({currentArticle:""})
-    }
-  }
-
-  updateUserPlaces = (places) => {
-    this.setState({userPlaces:places})
+    this.props.fetchArticles()
+    this.props.fetchPlaces()
   }
 
   display = () => {
-    if (this.state.currentArticle){
+    if (this.props.userMapView){
+      console.log("rendering option 1")
       return  (<div className="main-container">
-                <SearchPanel searchTerm={this.state.searchTerm} updateSearchTerm={this.updateSearchTerm} user={this.props.user}/>
-                <Article currentArticle= {this.state.currentArticle}/>
-                <Maps currentArticle = {this.state.currentArticle} user={this.props.user} userMapView={this.state.userMapView} changeUserMapView={this.changeUserMapView} updateUserPlaces={this.updateUserPlaces}/>
-              </div>)
+                <SearchPanel/>
+                <UserMap/>
+               </div>)
     } else {
-      if (this.state.userMapView) {
+      if (this.props.currentArticle) {
+        console.log("rendering option 2")
         return (<div className="main-container">
-                  <SearchPanel searchTerm={this.state.searchTerm} updateSearchTerm={this.updateSearchTerm} user={this.props.user}/>
-                  <UserMap user={this.props.user} allPlaces={this.state.allPlaces} userPlaces={this.state.userPlaces} updateUserPlaces={this.updateUserPlaces}/>
+                  <SearchPanel/>
+                  <ArticleContainer/>
                </div>)
       } else {
+        console.log("rendering option 3")
         return (<div className="main-container">
-                  <SearchPanel searchTerm={this.state.searchTerm} updateSearchTerm={this.updateSearchTerm} user={this.props.user} changeUserMapView={this.changeUserMapView}/>
-                  <TitleList allArticles= {this.state.allArticles} changeCurrentArticle={this.changeCurrentArticle} searchTerm={this.state.searchTerm}/>
+                  <SearchPanel/>
+                  <ArticleList/>
                </div>)
       }
     }
@@ -90,4 +49,23 @@ class MainContainer extends Component {
 
 }
 
-export default MainContainer;
+const mapStateToProps = (state) => {
+  return {
+      allArticles: state.allArticles,
+      allPlaces:state.allPlaces,
+      currentArticle: state.currentArticle,
+      searchTerm: state.searchTerm,
+      user:state.user,
+      userArticles: state.userArticles,
+      userMapView: state.userMapView,
+      userPlaces: state.userPlaces
+  }
+}
+
+// const mapDispatchtoProps = (dispatch) => {
+//   return {dispatchFetchArticles: dispatch(this.fetchArticles)}
+//   return {dispatchSaveArticles: dispatch(this.saveArticles)}
+//   return {dispatchUpdateSearchTerm: dispatch(this.updateSearchTerm)}
+// }
+
+export default connect(mapStateToProps, { fetchArticles, fetchPlaces })(MainContainer);

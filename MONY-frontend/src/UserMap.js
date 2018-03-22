@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import { connect } from "react-redux"
+
 let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
+
 
 class UserMap extends Component {
 
@@ -59,7 +62,20 @@ class UserMap extends Component {
     );}
   }
 
+  const mapStateToProps = (state) => {
+    return {
+        userPlaces: state.userPlaces,
+        userArticles: state.userArticles,
+        user:state.user
+    }
+  }
 
- export default GoogleApiWrapper({
- apiKey:APIkey
-})(UserMap)
+
+//  export default connect(mapStateToProps)
+//  export default (GoogleApiWrapper({
+//  apiKey:APIkey})
+// })(UserMap)
+
+const WrappedContainers = GoogleApiWrapper({
+apiKey:APIkey})(UserMap)
+export default connect(mapStateToProps)

@@ -1,52 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
+import {connect} from "react-redux"
 
 class Login extends Component {
-
-  handleSubmit = (event) => {
-    this.props.loginUser(event.target.value)
-  }
-
+//
+//   handleSubmit = (event) => {
+//     this.props.loginUser(event.target.value)
+//   }
+//
   render(){
     return (
       <div className="login" >
-        <form onSubmit={this.handleSubmit}>
-          <label>Please enter your name:</label>
-          <input type="text"></input>
-          <input type="submit">Login</input>
-        </form>
+//         <form onSubmit={this.handleSubmit}>
+//           <label>Please enter your name:</label>
+//           <input type="text"></input>
+//           <input type="submit">Login</input>
+//         </form>
       </div>
     )
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -98,4 +70,4 @@ class Login extends Component {
   // }
 }
 
-export default Login;
+export default connect()(Login);
