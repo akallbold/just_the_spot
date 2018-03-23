@@ -8,7 +8,7 @@ require 'json'
   doc_link = open("http://www.grubstreet.com/bestofnewyork/the-absolute-best-poutine-in-nyc.html")
   nokogiri_doc = Nokogiri::HTML(doc_link)
   list_array = nokogiri_doc.css(".directory-entry")
-  list_array[8..-1].each_with_index do |list_item,art_index|
+  list_array[0..-1].each_with_index do |list_item,art_index|
 
     list_hash = {url: list_item.children[1].values[1],
                  title: list_item.children.children.text}
@@ -19,9 +19,9 @@ require 'json'
 
     @article.update(img:nokogiri_doc.css(".img-data")[1].values[1])
     nokogiri_doc.css(".img-data")
-    place_info = nokogiri_doc.css(".clay-paragraph")[6..-1].each_with_index do |place,index|
+    place_info = nokogiri_doc.css(".clay-paragraph")[0..-1].each_with_index do |place,index|
 
-
+if (art_index != 8 && index !=9)
       place_hash = {name:"", address:"", description:"", article_id:@article.id}
       if index == 0
         @article.update(description: place.children.text)
@@ -70,6 +70,7 @@ require 'json'
         end
       end
     end
+  end
   end
 
 
