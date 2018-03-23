@@ -19,7 +19,7 @@ require 'json'
 
     @article.update(img:nokogiri_doc.css(".img-data")[1].values[1])
     nokogiri_doc.css(".img-data")
-    place_info = nokogiri_doc.css(".clay-paragraph")[5..-1].each_with_index do |place,index|
+    place_info = nokogiri_doc.css(".clay-paragraph")[6..-1].each_with_index do |place,index|
 
 
       place_hash = {name:"", address:"", description:"", article_id:@article.id}
@@ -42,27 +42,30 @@ require 'json'
             place_hash[:name] = name
             # byebug
             #addressbug
-            address_array=[]
+            address_array = []
             if place.children.last.text.length<100
               address_array = place.children.last.text.split(/[\,;]/)
             else
               address_array = place.children[place.children.length-2].text.split(/[\,;]/)
             end
-            if address_array.length == 4
-              place_hash[:address] = [address_array[0], address_array[2]].join("")
-            elsif address_array.length == 3
-              place_hash[:address] = [address_array[0], "New York City"].join(" ")
+              if address_array.length == 4
+                place_hash[:address] = [address_array[0], address_array[2]].join("")
+              elsif address_array.length == 3
+                place_hash[:address] = [address_array[0], "New York City"].join(" ")
+              else
+                place_hash[:address] = place_hash[:name] + ", New York City"
+              end
+              # byebug
+              #descriptionbug
+            description = nokogiri_doc.css(".clay-paragraph")[index+1].children.text
+
+            if description.length<100
+              place_hash[:description] = place.children.text
             else
-              place_hash[:address] = place_hash[:name] + ", New York City"
+              place_hash[:description] = description
             end
-            # byebug
-            #descriptionbug
-            if nokogiri_doc.css(".clay-paragraph")[index+1].children.text.length<100
-              place_hash[:description] = nokogiri_doc.css(".clay-paragraph")[index].children.text
-            else
-              place_hash[:description] = nokogiri_doc.css(".clay-paragraph")[index+1].children.text
-            end
-          @place = Place.create(place_hash)
+
+            @place = Place.create(place_hash)
           end
         end
       end
