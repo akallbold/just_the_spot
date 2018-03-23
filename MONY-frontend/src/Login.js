@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from "react-redux"
+import {changeUser} from './actions'
 
 class Login extends Component {
 //
@@ -11,13 +12,11 @@ class Login extends Component {
   render(){
     return (
       <div className="login" >
-//         <form onSubmit={this.handleSubmit}>
-//           <label>Please enter your name:</label>
-//           <input type="text"></input>
-//           <label>Please enter your password:</label>
-//           <input type="text"></input>
-//           <input type="submit">Login</input>
-//         </form>
+         <form onSubmit={this.handleSubmit}>
+            <label>Please enter your name:</label>
+            <input type="text" value={this.props.user.name}></input>
+            <input type="button" value="Login"></input>
+         </form>
       </div>
     )
   }
@@ -72,4 +71,10 @@ class Login extends Component {
   // }
 }
 
-export default connect()(Login);
+const mapStateToProps = (state) => {
+  return {
+      user: state.user
+  }
+}
+
+export default connect(mapStateToProps, {changeUser})(Login);

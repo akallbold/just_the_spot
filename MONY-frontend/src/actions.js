@@ -17,6 +17,13 @@ export let changeSearchTerm = (event) => {
   }
 }
 
+export let changeUser = (user) => {
+  return {
+    type:"CHANGE_USER",
+    payload: user
+  }
+}
+
 export let changeUserMapView = () => {
   return {
       type:"CHANGE_USER_MAP_VIEW"

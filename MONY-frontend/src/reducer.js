@@ -18,6 +18,8 @@ const monyReducer = (state = defaultState, action) => {
       return {...state,currentPlaces:action.payload}
     case "CHANGE_SEARCH_TERM":
       return {...state, searchTerm:action.payload}
+    case "CHANGE_USER":
+      return {...state, user:action.payload}
     case "CHANGE_USER_MAP_VIEW":
       return {...state, userMapView:!state.userMapView}
     case "REMOVE_CURRENT_ARTICLE":
