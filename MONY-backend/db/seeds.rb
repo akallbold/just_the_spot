@@ -8,7 +8,7 @@ require 'json'
   doc_link = open("http://www.grubstreet.com/bestofnewyork/the-absolute-best-poutine-in-nyc.html")
   nokogiri_doc = Nokogiri::HTML(doc_link)
   list_array = nokogiri_doc.css(".directory-entry")
-  list_array.each_with_index do |list_item,art_index|
+  list_array[8..-1].each_with_index do |list_item,art_index|
 
     list_hash = {url: list_item.children[1].values[1],
                  title: list_item.children.children.text}
@@ -19,7 +19,7 @@ require 'json'
 
     @article.update(img:nokogiri_doc.css(".img-data")[1].values[1])
     nokogiri_doc.css(".img-data")
-    place_info = nokogiri_doc.css(".clay-paragraph").each_with_index do |place,index|
+    place_info = nokogiri_doc.css(".clay-paragraph")[5..-1].each_with_index do |place,index|
 
 
       place_hash = {name:"", address:"", description:"", article_id:@article.id}
@@ -28,13 +28,26 @@ require 'json'
       else
         if place.children[0].name != "i"
           if index % 2 != 0
+            # byebug
+            #namebug
             name = place.children[0].children.text
             regex_match = (/\d*\W/ =~ name)
             if (regex_match == 0) && (name.length < 4)
+              # byebug
               name = place.children[1].children.text
+              if name == ""
+                name = place.children[2].children.text
+              end
             end
             place_hash[:name] = name
-            address_array = place.children.last.text.split(/[\,;]/)
+            # byebug
+            #addressbug
+            address_array=[]
+            if place.children.last.text.length<100
+              address_array = place.children.last.text.split(/[\,;]/)
+            else
+              address_array = place.children[place.children.length-2].text.split(/[\,;]/)
+            end
             if address_array.length == 4
               place_hash[:address] = [address_array[0], address_array[2]].join("")
             elsif address_array.length == 3
@@ -42,8 +55,13 @@ require 'json'
             else
               place_hash[:address] = place_hash[:name] + ", New York City"
             end
-
-          place_hash[:description] = nokogiri_doc.css(".clay-paragraph")[index+1].children.text
+            # byebug
+            #descriptionbug
+            if nokogiri_doc.css(".clay-paragraph")[index+1].children.text.length<100
+              place_hash[:description] = nokogiri_doc.css(".clay-paragraph")[index].children.text
+            else
+              place_hash[:description] = nokogiri_doc.css(".clay-paragraph")[index+1].children.text
+            end
           @place = Place.create(place_hash)
           end
         end
