@@ -18,12 +18,12 @@ class Maps extends React.Component {
     this.props.fetchCurrentPlaces(this.props.currentArticle)
   }
 
-  handleInfoMarker = (place) => {
-    console.log("in handleinfo marker")
-    debugger
+  handleInfoMarker = (place,marker) => {
+    // debugger
       // this.setState({activeMarker:event.target})
-      this.setState({showingInfoWindow:!this.state.showingInfoWindow})
-      this.setState({selectedPlace:place})
+      this.setState({showingInfoWindow:!this.state.showingInfoWindow,
+                     selectedPlace:place,
+                     activeMarker:marker})
   }
 
   createMarkers = () => {
@@ -34,7 +34,7 @@ class Maps extends React.Component {
                 title={`title ${place.name}`}
                 name={`name ${place.name}`}
                 position={{lat:place.latitude,lng:place.longitude}}
-                onClick={() => this.handleInfoMarker(place)}
+                onClick={() => this.handleInfoMarker(place,place.id)}
               />
     })
   }
@@ -84,6 +84,7 @@ class Maps extends React.Component {
 
   render() {
     console.log("current places",this.props.currentPlaces)
+    console.log("user article", this.props.userArticles)
     return (
 
        <div className="right-panel">
@@ -98,7 +99,7 @@ class Maps extends React.Component {
            >
               {this.createMarkers()}
               <InfoWindow
-                marker={this.state.activeMarker}
+                // marker={this.state.activeMarker}
                 visible={this.state.showingInfoWindow}>
                 <div>
                   <h1>{this.state.selectedPlace.name}</h1>
@@ -106,7 +107,7 @@ class Maps extends React.Component {
               </InfoWindow>
            </Map>
         </div>
-        <button onClick= {()=>this.props.savePlacesToUser(this.props.currentPlaces)} className="save-button" value="Save Map">Save Map</button>
+        <button onClick= {()=>this.props.fetchSaveArticleToUser(this.props.currentArticle)} className="save-button" value="Save Map">Save Map</button>
       </div>
     )
   }

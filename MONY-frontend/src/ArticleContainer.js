@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from "react-redux"
 import Article from "./Article"
 import Maps from "./Maps"
-import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser} from './actions'
+import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser} from './actions'
 
 
 class ArticleContainer extends Component {
@@ -17,6 +17,9 @@ class ArticleContainer extends Component {
           savePlacesToUser={this.props.savePlacesToUser}
           selectedPlace={this.props.selectedPlace}
           showingInfoWindow= {this.props.selectedPlace}
+          fetchSaveArticleToUser={this.props.fetchSaveArticleToUser}
+          fetchSavePlacesToUser ={this.props.fetchSavePlacesToUser}
+          userArticles={this.props.userArticles}
         />
       </div>
     );
@@ -31,4 +34,4 @@ const mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps, { fetchCurrentPlaces, saveStuffToUser, savePlacesToUser })(ArticleContainer);
+export default connect(mapStateToProps, { fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser })(ArticleContainer);

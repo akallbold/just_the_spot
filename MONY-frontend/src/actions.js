@@ -33,7 +33,6 @@ export function fetchArticles() {
   }
 }
 
-
 export function fetchCurrentPlaces(article) {
   return function (dispatch){
     fetch(`http://localhost:3000/article/${article.id}/places`)
@@ -75,7 +74,6 @@ export function saveGeocode(place) {
   })
 }
 
-
 export function fetchPlaces() {
   return function (dispatch){
     fetch("http://localhost:3000/places")
@@ -86,6 +84,40 @@ export function fetchPlaces() {
   }
 }
 
+export function fetchSaveArticleToUser(article) {
+  console.log("in fetchsavearticlestouser")
+  return function (dispatch){
+    fetch(`http://localhost:3000/users/1/articles`, {
+      method:"POST",
+      headers:{ "Content-Type": "application/json" },
+      body: JSON.stringify({
+        article_id:article.id
+        })
+    })
+   .then(response => response.json())
+   .then(data => {
+     dispatch({type:"SAVE_USER_ARTICLES"})
+     dispatch({type:"SAVE_PLACES_TO_USER"})
+   })
+ }
+}
+
+export function fetchSavePlacesToUser(user_id) {
+//   console.log("in fetchsaveplacestouser")
+//   return function (dispatch){
+//     fetch(`http://localhost:3000/users/1/places`)
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log("data",data)
+//       dispatch({type:"SAVE_USER_PLACES", payload:data})
+//     })
+//   }
+}
+
+
+
+
+
 export let saveArticleToUser = (article) => {
   console.log("in save article to user")
   return {
@@ -94,11 +126,10 @@ export let saveArticleToUser = (article) => {
   }
 }
 
-export let savePlacesToUser = (places) => {
+export let savePlacesToUser = () => {
   console.log("in save places to user")
   return {
-    type:"SAVE_PLACES_TO_USER",
-    payload:places
+    type:"SAVE_PLACES_TO_USER"
   }
 }
 
@@ -107,19 +138,3 @@ export let saveStuffToUser = (article,places) => {
   saveArticleToUser(article)
   savePlacesToUser(places)
 }
-
-// export function fetchSaveArticleToUser(article) {
-//   return function (dispatch){
-//     fetch(`http://localhost:3000/article/${article.id}/places`)
-//    .then(response => response.json())
-//    .then(data => {
-//      return data.map(place => {
-//        let formattedAddress = place.address.replace(/ /g,"+")
-//        return fetchGeocode(place)
-//      })
-//     })
-//     .then(data => {
-//       Promise.all(data).then(data2 => dispatch({type:"SAVE_CURRENT_PLACES", payload:data2}))
-//     })
-//   }
-// }

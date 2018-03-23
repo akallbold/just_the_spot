@@ -14,6 +14,8 @@ class Login extends Component {
 //         <form onSubmit={this.handleSubmit}>
 //           <label>Please enter your name:</label>
 //           <input type="text"></input>
+//           <label>Please enter your password:</label>
+//           <input type="text"></input>
 //           <input type="submit">Login</input>
 //         </form>
       </div>

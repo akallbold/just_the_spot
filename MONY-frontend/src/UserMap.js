@@ -5,6 +5,79 @@ let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
 
 class UserMap extends Component {
 
+  state={
+    showingInfoWindow:false,
+    selectedPlace:{},
+    activeMarker:{}
+  }
+
+
+
+handleInfoMarker = (place,marker) => {
+  // debugger
+    // this.setState({activeMarker:event.target})
+    this.setState({showingInfoWindow:!this.state.showingInfoWindow,
+                   selectedPlace:place,
+                   activeMarker:marker})
+}
+
+  createMarkers = () => {
+    if (this.props.userPlaces[0].length>0)
+    {return this.props.userPlaces[0].map(place => {
+       return <Marker
+                key={place.id}
+                title={`title ${place.name}`}
+                name={`name ${place.name}`}
+                position={{lat:place.latitude,lng:place.longitude}}
+                onClick={() => this.handleInfoMarker(place,place.id)}
+              />
+    })}
+  }
+
+  createArticleList = () => {
+    if (this.props.userArticles[0].length>0){
+      return this.props.userArticles[0].map(article => {
+        return <p key={article.id}> {article.name} </p>
+      })
+    }
+  }
+
+  createPlaceList = () => {
+    if (this.props.userPlaces.length>0){
+      return this.props.userPlaces.map(place => {
+        return <p key={place.id}> {place.name} </p>
+      })
+    }
+  }
+
+
+
+  render() {
+    return (
+      <div >
+       <div >
+          <Map
+           google={this.props.google}
+           initialCenter={{lat:40.730610,lng:-73.935242}}
+           style={{ width: "75%", height: "75%", position: "relative" }}
+           className={"map"}
+           zoom={13}>
+            {this.createMarkers()}
+            <InfoWindow
+              // marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}>
+              <div>
+                <h1>{this.state.selectedPlace.name}</h1>
+              </div>
+            </InfoWindow>
+          </Map>
+          {this.createArticleList()}
+          {this.createPlaceList()}
+        </div>
+      </div>
+    );}
+  }
+
   // componentDidMount = () => {
   //   this.fetchUserPlaces(this.props.user)
   // }
@@ -36,40 +109,6 @@ class UserMap extends Component {
 //     place.article_id == this.props.userArticles
 //   })
 // }
-
-  createMarkers = () => {
-    // debugger
-    // console.log("props in createmarkers",this.props.userPlaces)
-    if (this.props.userPlaces[0].length>0)
-{    return this.props.userPlaces[0].map(place => {
-      console.log("place in createmarkers",place)
-       return <Marker
-                title={`title ${place.name}`}
-                name={`name ${place.name}`}
-                position={{lat:place.latitude,lng:place.longitude}}
-              />
-    })}
-  }
-
-
-
-  render() {
-    console.log("props",this.props)
-    return (
-      <div >
-       <div >
-          <Map
-           google={this.props.google}
-           initialCenter={{lat:40.730610,lng:-73.935242}}
-           style={{ width: "75%", height: "75%", position: "relative" }}
-           className={"map"}
-           zoom={13}>
-            {this.createMarkers()}
-          </Map>
-        </div>
-      </div>
-    );}
-  }
 
 
 

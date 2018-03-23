@@ -4,7 +4,6 @@ const defaultState = {
   currentArticle: "",
   currentPlaces:[],
   searchTerm: "",
-
   user:{name:"anna", id:1},
   userArticles: [],
   userMapView: false,
@@ -33,6 +32,11 @@ const monyReducer = (state = defaultState, action) => {
       return {...state, allPlaces:action.payload}
     case "SAVE_PLACES_TO_USER":
       return {...state, userPlaces:[...state.userPlaces,state.currentPlaces]}
+    case "SAVE_USER_ARTICLES":
+    console.log("in save user articles reducer")
+      return {...state, userArticles:[...state.userArticles,state.currentArticle]}
+    case "SAVE_USER_PLACES":
+      return {...state, userPlaces:action.payload}
     default:
       return state
   }
