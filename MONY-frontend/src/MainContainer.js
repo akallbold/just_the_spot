@@ -17,20 +17,21 @@ class MainContainer extends Component {
 
   display = () => {
     if (this.props.userMapView){
-      console.log("rendering option 1")
       return  (<div className="main-container">
                 <SearchPanel/>
-                <UserMap/>
+                <UserMap
+                  userPlaces={this.props.userPlaces}
+                  userArticles={this.props.userArticles}
+                  user={this.props.user}
+                />
                </div>)
     } else {
       if (this.props.currentArticle) {
-        console.log("rendering option 2")
         return (<div className="main-container">
                   <SearchPanel/>
                   <ArticleContainer/>
                </div>)
       } else {
-        console.log("rendering option 3")
         return (<div className="main-container">
                   <SearchPanel/>
                   <ArticleList/>
