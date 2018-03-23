@@ -7,6 +7,7 @@ import ArticleContainer from "./ArticleContainer"
 import UserMap from "./UserMap"
 import {connect} from "react-redux"
 import { fetchArticles, fetchPlaces } from "./actions"
+import PlaceList from "./PlaceList"
 
 class MainContainer extends Component {
 
@@ -35,6 +36,7 @@ class MainContainer extends Component {
         return (<div className="main-container">
                   <SearchPanel/>
                   <ArticleList/>
+                  <PlaceList/>
                </div>)
       }
     }

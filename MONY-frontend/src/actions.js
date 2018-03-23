@@ -82,10 +82,12 @@ export function saveGeocode(place) {
 }
 
 export function fetchPlaces() {
+  console.log("in fetch places")
   return function (dispatch){
     fetch("http://localhost:3000/places")
     .then(response => response.json())
     .then(data => {
+      console.log("fetch places data", data)
       dispatch({type:"SAVE_PLACES", payload:data})
     })
   }

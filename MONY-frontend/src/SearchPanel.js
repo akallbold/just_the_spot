@@ -10,11 +10,7 @@ class SearchPanel extends Component {
 
       <div className="left-panel search">
         <p>{`Hello ${this.props.user.name}`}</p>
-        <p>Find the best spots in New York City!</p>
 
-        <p>Search by list or place below...</p>
-
-        <p>Or browse the lists to the right</p>
 
 
 

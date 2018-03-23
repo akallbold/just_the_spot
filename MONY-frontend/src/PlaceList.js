@@ -2,28 +2,32 @@ import React, { Component } from 'react';
 import {connect} from "react-redux"
 import {changeCurrentArticle} from './actions'
 
-class ArticleList extends Component {
+class PlaceList extends Component {
 
   createElements = () => {
-    let relevantLists = this.props.allArticles.filter(article => {
-      return article.title.toUpperCase().includes(this.props.searchTerm.toUpperCase())
+    console.log("create elements",this.props)
+    // debugger
+    if (this.props.allPlaces.length>0)
+    {let relevantPlaces = this.props.allPlaces.filter(place => {
+      console.log("place", place)
+      return place.name.toUpperCase().includes(this.props.searchTerm.toUpperCase())
     })
-    return relevantLists.map(article => {
+    return relevantPlaces.map(place => {
       return(
         <div>
-          <a className= "article"
-            key={article.id} article= {article} onClick={()=>this.props.changeCurrentArticle(article)}>{article.title}</a>
+          <a className= "place"
+            key={place.id}>{place.name}</a>
         </div>
       )
-    })
+    })}
   }
 
 
   render() {
-
+console.log("render props",this.props)
     return (
       <div className="title-list">
-        <p>Article List</p>
+        <p>Place List</p>
         {this.createElements()}
       </div>
     );
@@ -43,4 +47,4 @@ const mapStateToProps = (state) => {
 //   return {dispatchChangeCurrentArticle: (article) => dispatch(changeCurrentArticle)}
 // }
 
-export default connect(mapStateToProps, {changeCurrentArticle})(ArticleList);
+export default connect(mapStateToProps, {changeCurrentArticle})(PlaceList);
