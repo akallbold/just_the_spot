@@ -8,17 +8,20 @@ class SearchPanel extends Component {
   render() {
     return (
 
-      <div className="left-panel search">
-        <p>{`Hello ${this.props.user.name}`}</p>
+      <div className="search-bar">
+        <p>searchbarcontainter</p>
+        <span className="search-bar-text">
+          <h4>Search for a "Best of" list or by Place</h4>
+        </span>
 
-
-
-
-        <form className="search-form">
-          <label>Search</label>
-          <input type="text" value={this.props.searchTerm} onChange={this.props.changeSearchTerm}/>
-        </form>
-        <button onClick={this.props.changeUserMapView}>View my Map!</button>
+        <span className="search-form">
+          <form>
+            <input className="search-form" type="text" value={this.props.searchTerm} onChange={this.props.changeSearchTerm}/>
+          </form>
+        </span>
+        <span className="view-usermap-btn">
+          <button  onClick={this.props.changeUserMapView}>View my Map!</button>
+        </span>
       </div>
     );
   }

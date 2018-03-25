@@ -1,72 +1,204 @@
+
+
+
 .body{
     font-family: 'Playfair Display', serif;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .main-container{
   display: flex;
-  justify-content: space-between;
+  flex-direction:column;
+  justify-content: flex-start;
+
   border: black 5px solid;
   min-width: 100%;
-  min-height: 900px;
-  font-family: 'Playfair Display', serif;
+  min-height: 100%;
 }
 
-.left-panel{
+  .home{
+    font-size: 90px;
+    display:block;
+    font-family: 'Anton', sans-serif;
+    background-color: #ACDBC9;
+    color: white;
+    min-width: 100%;
+    min-height: 800px;
+  }
+
+  .search-view{
+    border: black 5px solid;
+    display:block;    min-width: 100%;
+    min-height: 800px;
+    background: #F7A7A6;
+    color: white;
+  }
+
+    .search-bar{
+      display: inline-flex;
+      border: black 5px solid;
+      display: flex;
+      justify-content: center;
+      height: 10%;
+      min-width: 100%;
+      background: #F48B94;
+      color: white;
+    }
+      .search-bar-text{
+        display: block;
+        width: 80%;
+      }
+
+      .search-form{
+          border: black 5px solid;
+        display: block;
+        width: 100%;
+        color: black;
+      }
+
+      .view-usermap-btn{
+        width: 20%;
+        color: black;
+      }
+
+    .article-preview-list{
+      display:flex;
+      flex-direction:row;
+      justify-content: space-between;
+      border: black 5px solid;
+      flex-shrink: 1;
+      flex-wrap: wrap
+    }
+
+      .article-preview{
+        font-weight: bold;
+        text-align: center;
+        display:flex;
+        flex-direction:column;
+        align-content: center;
+        justify-content: center;
+        width:20%;
+        height:300px;
+        background: rgba(255, 255, 255, 0.5);
+        margin:35px;
+      }
+
+      .article-preview-img{
+        align-items: center;
+        width:90%;
+        /* height:75%; */
+      }
+
+    .place-preview-list{
+      display:flex;
+      flex-direction:row;
+      justify-content: space-between;
+      border: black 5px solid;
+      flex-shrink: 1;
+      flex-wrap: wrap
+    }
+
+      .place-preview{
+        font-weight: bold;
+        text-align: center;
+        display:flex;
+        flex-direction:column;
+        align-content: center;
+        justify-content: center;
+        width:20%;
+        height:300px;
+        background: rgba(255, 255, 255, 0.5);
+        margin:35px;
+      }
+  .article-container{
+background-color: #FDD2B5;
+width:100%;
+height:100%;
+  }
+
+  .go-back-btn{
+  background: black;
+  }
+
+  .article-main{
+display: flex;
+flex-direction: column;
+align-items: center;
+
+/* justify-content: center; */
+  }
+
+  .main-article-img{
+  width: 95%;
+
+  /* height: 100% */
+  }
+
+  .article-map-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+    .article-map{
+      display: flex;
+      width: 40%;
+      /* float: left; */
+    }
+
+    .article-details{
+      display: flex;
+      width:40%;
+      background: white;
+        /* margin:10px */
+      /* float: right; */
+    }
+
+.map{
+  width:40%;
+  /* margin:10px */
+}
+
+.add-remove-map-to-user-btn{
+  margin: 5px;
+  padding: 10px;
+}
+
+
+
+/* #ACDBC9
+#DBEBC2
+#FDD2B5
+#F7A7A6
+#F48B94 */
+
+/* .left-panel{
   display: flex;
   /* align-items: stretch; */
   /* justify-content: center; */
-  width: 25%
-}
-.center-panel{
+  /* width: 25%;
+} */
+/* .center-panel{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%
-}
-.right-panel{
+  width: 50%;
+} */
+/* .right-panel{
   display: flex;
   background-color: yellow;
   width: 25%
-}
+} */
 
-.search{
+/* .search{
 background-color: green;
 font-family: 'Playfair Display', serif;
 font-size: 20px;
-}
-
+} */
+/*
 .article{
   font-family: 'Playfair Display', serif;
-}
+} */ */
 
 .map{
   height: 15%;
@@ -75,19 +207,11 @@ font-size: 20px;
   align-items: center;
 }
 
-.save-button{
+/* .save-button{
   position: absolute;
   top: 370px;
   left: 1150px;
 
   align-self: center;
 
-}
-.title-list{
-
-}
-
-.search-form{
-  position: absolute;
-  top: 370px;
-}
+} */

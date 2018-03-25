@@ -1,23 +1,55 @@
 import React, { Component } from 'react';
-import Iframe from "react-iframe"
 import {connect} from "react-redux"
+import Maps from "./Maps"
+import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser} from './actions'
+import ArticleDetails from './ArticleDetails'
+import PlaceWriteUpList from './PlaceWriteUpList'
 
 class Article extends Component {
+
+  componentDidMount(){
+    this.props.fetchCurrentPlaces(this.props.currentArticle)
+  }
+
   render() {
-    // console.log("current article in article", this.props.currentArticle.title)
     return (
-      <div className="center-panel">
-        {/* <Iframe url= {this.props.currentArticle.url} width="50%"/> */}
-        <p> The article is here...get rid of the iframe and save the image and descriptions </p>
-        <p>{this.props.currentArticle.title}</p>
+      <div className="article-main">
+        <img alt="yum- article cover" className="main-article-img" src= {"https://pixel.nymag.com/imgs/daily/grub/2016/best-of-new-york/best-baguette-she-wolf-bakery.jpg"}/>
+        <div className="article-map-details">
+          <div className="article-map">
+            <Maps
+              currentPlaces={this.props.currentPlaces}
+              currentArticle={this.props.currentArticle}
+              userArticles={this.props.userArticles}
+              fetchCurrentPlaces={this.props.fetchCurrentPlaces}
+              saveStuffToUser= {this.props.saveStuffToUser}
+              savePlacesToUser={this.props.savePlacesToUser}
+              selectedPlace={this.props.selectedPlace}
+              showingInfoWindow= {this.props.selectedPlace}
+              fetchSaveArticleToUser={this.props.fetchSaveArticleToUser}
+              fetchSavePlacesToUser ={this.props.fetchSavePlacesToUser}
+            />
+          </div>
+          <div className="article-details">
+            <ArticleDetails/>
+            <PlaceWriteUpList/>
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+
 const mapStateToProps = (state) => {
   return {
-      currentArticle: state.currentArticle,
+    currentPlaces:state.currentPlaces,
+    currentArticle:state.currentArticle,
+    selectedPlace:state.selectedPlace,
+    showingInfoWindow:state.showingInfoWindow,
+    userArticles:state.userArticles
   }
+
 }
 
-export default connect(mapStateToProps)(Article);
+export default connect(mapStateToProps, { fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser })(Article);

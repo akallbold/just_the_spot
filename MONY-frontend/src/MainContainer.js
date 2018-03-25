@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from "./Login"
+// import Login from "./Login"
 import SearchPanel from "./SearchPanel"
-import ArticleList from "./ArticleList"
+// import ArticleList from "./ArticleList"
 import ArticleContainer from "./ArticleContainer"
 import UserMap from "./UserMap"
 import {connect} from "react-redux"
 import { fetchArticles, fetchPlaces } from "./actions"
-import PlaceList from "./PlaceList"
+// import PlaceList from "./PlaceList"
+import Home from "./Home"
+import SearchView from "./SearchView"
 
 class MainContainer extends Component {
 
@@ -18,7 +20,7 @@ class MainContainer extends Component {
 
   display = () => {
     if (this.props.userMapView){
-      return  (<div className="main-container">
+      return  (<div className="usermap-container">
                 <SearchPanel/>
                 <UserMap
                   userPlaces={this.props.userPlaces}
@@ -28,15 +30,14 @@ class MainContainer extends Component {
                </div>)
     } else {
       if (this.props.currentArticle) {
-        return (<div className="main-container">
-                  <SearchPanel/>
+        return (<div className="article-container">
+                  {/* <SearchPanel/> */}
                   <ArticleContainer/>
                </div>)
       } else {
-        return (<div className="main-container">
-                  <SearchPanel/>
-                  <ArticleList/>
-                  <PlaceList/>
+        return (<div className="main">
+                  <Home/>
+                  <SearchView/>
                </div>)
       }
     }

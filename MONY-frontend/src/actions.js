@@ -1,9 +1,9 @@
 
-import Geocode from "react-geocode";
 let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
 
 
 export let changeCurrentArticle = (article) => {
+  console.log("article in changecurrent article action", article)
   return {
     type:"CHANGE_CURRENT_ARTICLE",
     payload: article
@@ -21,6 +21,12 @@ export let changeUser = (user) => {
   return {
     type:"CHANGE_USER",
     payload: user
+  }
+}
+
+export let goHome = () => {
+  return {
+    type:"GO_HOME"
   }
 }
 
@@ -46,7 +52,6 @@ export function fetchCurrentPlaces(article) {
    .then(response => response.json())
    .then(data => {
      return data.map(place => {
-       let formattedAddress = place.address.replace(/ /g,"+")
        return fetchGeocode(place)
      })
     })
@@ -82,7 +87,6 @@ export function saveGeocode(place) {
 }
 
 export function fetchPlaces() {
-  console.log("in fetch places")
   return function (dispatch){
     fetch("http://localhost:3000/places")
     .then(response => response.json())
@@ -123,7 +127,13 @@ export function fetchSavePlacesToUser(user_id) {
 //   }
 }
 
-
+export let removeArticleFromUser = (articleArray) => {
+  console.log("in remove removeArticlefrom user in actions")
+  return {
+    type:"REMOVE_ARTICLE_FROM_USER",
+    payload:articleArray
+  }
+}
 
 
 

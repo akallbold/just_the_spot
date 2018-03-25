@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
 import {changeCurrentArticle} from './actions'
+import ArticlePreview from './ArticlePreview'
 
 class ArticleList extends Component {
 
@@ -10,10 +11,8 @@ class ArticleList extends Component {
     })
     return relevantLists.map(article => {
       return(
-        <div>
-          <a className= "article"
-            key={article.id} article= {article} onClick={()=>this.props.changeCurrentArticle(article)}>{article.title}</a>
-        </div>
+          <ArticlePreview
+            key= {article.id} article= {article} onClick={()=>this.props.changeCurrentArticle(article)}/>
       )
     })
   }
@@ -22,8 +21,8 @@ class ArticleList extends Component {
   render() {
 
     return (
-      <div className="title-list">
-        <p>Article List</p>
+      <div className="article-preview-list">
+        <p>Article List Container</p>
         {this.createElements()}
       </div>
     );

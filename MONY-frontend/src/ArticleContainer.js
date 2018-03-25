@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
+import {goHome} from './actions'
 import Article from "./Article"
-import Maps from "./Maps"
-import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser} from './actions'
+
 
 
 class ArticleContainer extends Component {
   render() {
+    console.log("current places in article container", this.props.currentPlaces)
     return (
-      <div className="center-panel">
+      <div className="article-container">
+        <span className="go-back-btn">
+          <button  onClick={this.props.goHome}>Go Back!</button>
+        </span>
         <Article/>
-        <Maps
-          currentPlaces={this.props.currentPlaces} currentArticle={this.props.currentArticle}
-          userArticles={this.props.userArticles}
-           fetchCurrentPlaces={this.props.fetchCurrentPlaces} saveStuffToUser= {this.props.saveStuffToUser}
-          savePlacesToUser={this.props.savePlacesToUser}
-          selectedPlace={this.props.selectedPlace}
-          showingInfoWindow= {this.props.selectedPlace}
-          fetchSaveArticleToUser={this.props.fetchSaveArticleToUser}
-          fetchSavePlacesToUser ={this.props.fetchSavePlacesToUser}
-          userArticles={this.props.userArticles}
-        />
       </div>
     );
   }
@@ -34,4 +27,4 @@ const mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps, { fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser })(ArticleContainer);
+export default connect(mapStateToProps, { goHome })(ArticleContainer);

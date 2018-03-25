@@ -1,6 +1,5 @@
 import React from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import Geocode from "react-geocode";
 
 
 let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
@@ -14,9 +13,9 @@ class Maps extends React.Component {
     activeMarker:{}
   }
 
-  componentDidMount(){
-    this.props.fetchCurrentPlaces(this.props.currentArticle)
-  }
+  // componentDidMount(){
+  //   this.props.fetchCurrentPlaces(this.props.currentArticle)
+  // }
 
   handleInfoMarker = (place,marker) => {
     // debugger
@@ -31,7 +30,7 @@ class Maps extends React.Component {
     return this.props.currentPlaces.map(place => {
        return <Marker
                 key={place.id}
-                title={`title ${place.name}`}
+                // title={`title ${place.name}`}
                 name={`name ${place.name}`}
                 position={{lat:place.latitude,lng:place.longitude}}
                 onClick={() => this.handleInfoMarker(place,place.id)}
@@ -83,8 +82,9 @@ class Maps extends React.Component {
 
 
   render() {
-    console.log("current places",this.props.currentPlaces)
-    console.log("user article", this.props.userArticles)
+    console.log("current places in map",this.props.currentPlaces)
+    debugger
+    // console.log("user article", this.props.userArticles)
     return (
 
        <div className="right-panel">
@@ -92,10 +92,10 @@ class Maps extends React.Component {
            <Map
              google={this.props.google}
              initialCenter={this.props.currentPlaces.length>0 ?
-               {lat:this.props.currentPlaces[0].latitude,lng:this.props.currentPlaces[0].latitude} : {lat:40.730610,lng:-73.935242}}
-             style={{ width: "100%", height: "100%", position: "relative" }}
+               {lat:this.props.currentPlaces[0].latitude,lng:this.props.currentPlaces[0].longitude} : {lat:40.730610,lng:-73.935242}}
+             style={{ width: "50%", height: "50%", position: "relative" }}
              className={"map"}
-             zoom={12}
+             zoom={15}
            >
               {this.createMarkers()}
               <InfoWindow
@@ -107,7 +107,7 @@ class Maps extends React.Component {
               </InfoWindow>
            </Map>
         </div>
-        <button onClick= {()=>this.props.fetchSaveArticleToUser(this.props.currentArticle)} className="save-button" value="Save Map">Save Map</button>
+        {/* <button onClick= {()=>this.props.fetchSaveArticleToUser(this.props.currentArticle)} className="save-button" value="Save Map">Save Map</button> */}
       </div>
     )
   }
