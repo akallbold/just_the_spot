@@ -5,7 +5,6 @@ import {changeCurrentArticle} from './actions'
 class PlacePreview extends Component {
 
   findArticleForPlace = () => {
-    console.log("in index of article for place")
     return this.props.allArticles.filter(article => {
       return article.id === this.props.place.article_id
     })

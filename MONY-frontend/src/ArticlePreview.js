@@ -9,7 +9,7 @@ class ArticlePreview extends Component {
       <span className="article-preview"
             onClick={()=>this.props.changeCurrentArticle(this.props.article)}  >
         <p>{this.props.article.title}</p>
-        <img alt="article cover" className="article-preview-img" src="https://pixel.nymag.com/imgs/daily/grub/2016/best-of-new-york/best-baguette-she-wolf-bakery.jpg"/>
+        <img alt="article cover" className="article-preview-img" src={this.props.article.img}/>
       </span>
     );
   }

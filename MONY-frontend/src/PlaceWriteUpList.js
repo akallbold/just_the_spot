@@ -12,7 +12,6 @@ createPlaceWriteUpElements = () => {
 }
 
   render() {
-    console.log("props in placewrite uplist", this.props)
     return (
       <div className="place-write-up-list">
         <PlaceWriteUp/>

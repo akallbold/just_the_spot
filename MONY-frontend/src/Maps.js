@@ -82,8 +82,7 @@ class Maps extends React.Component {
 
 
   render() {
-    console.log("current places in map",this.props.currentPlaces)
-    debugger
+
     // console.log("user article", this.props.userArticles)
     return (
 
@@ -95,7 +94,7 @@ class Maps extends React.Component {
                {lat:this.props.currentPlaces[0].latitude,lng:this.props.currentPlaces[0].longitude} : {lat:40.730610,lng:-73.935242}}
              style={{ width: "50%", height: "50%", position: "relative" }}
              className={"map"}
-             zoom={15}
+             zoom={12}
            >
               {this.createMarkers()}
               <InfoWindow

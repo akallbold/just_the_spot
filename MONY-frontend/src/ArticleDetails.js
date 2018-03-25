@@ -5,14 +5,12 @@ import {saveArticleToUser, removeArticleFromUser} from './actions'
 class ArticleDetails extends Component {
 
 removeArticleFromUserArray= () =>{
-  console.log("in removearticlefrom user array function")
   return this.props.userArticles.filter(articleObj => {
     return articleObj.id !== this.props.currentArticle.id
   })
 }
 
 buttonDisplay = () => {
-    console.log("user articles in button display", this.props.userArticles) 
   if (this.props.userArticles.find(articleObj => {return articleObj.id === this.props.currentArticle.id})) {
     return (<button className="add-remove-map-to-user-btn"
               onClick= {()=>this.props.removeArticleFromUser(this.removeArticleFromUserArray)}
@@ -29,7 +27,6 @@ buttonDisplay = () => {
 
 
   render() {
-    console.log("user articles in article details render", this.props.userArticles)
     return (
       <div className="article-details-mini">
         <h4>{this.props.currentArticle.title}</h4>

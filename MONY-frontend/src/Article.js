@@ -14,10 +14,10 @@ class Article extends Component {
   render() {
     return (
       <div className="article-main">
-        <img alt="yum- article cover" className="main-article-img" src= {"https://pixel.nymag.com/imgs/daily/grub/2016/best-of-new-york/best-baguette-she-wolf-bakery.jpg"}/>
+        <img alt="yum- article cover" className="main-article-img" src= {this.props.currentArticle.img}/>
         <div className="article-map-details">
           <div className="article-map">
-            <Maps
+            {/* <Maps
               currentPlaces={this.props.currentPlaces}
               currentArticle={this.props.currentArticle}
               userArticles={this.props.userArticles}
@@ -28,7 +28,7 @@ class Article extends Component {
               showingInfoWindow= {this.props.selectedPlace}
               fetchSaveArticleToUser={this.props.fetchSaveArticleToUser}
               fetchSavePlacesToUser ={this.props.fetchSavePlacesToUser}
-            />
+            /> */}
           </div>
           <div className="article-details">
             <ArticleDetails/>

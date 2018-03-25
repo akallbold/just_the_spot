@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180322165307) do
   create_table "articles", force: :cascade do |t|
     t.string "url"
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "img"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20180322165307) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "article_id"
-    t.float "longitude"
-    t.float "latitude"
+    t.decimal "longitude", precision: 10, scale: 6
+    t.decimal "latitude", precision: 10, scale: 6
     t.text "description"
   end
 

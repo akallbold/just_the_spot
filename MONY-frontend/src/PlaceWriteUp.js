@@ -4,7 +4,6 @@ import {connect} from "react-redux"
 
 class PlaceWriteUp extends Component {
   render() {
-    console.log("props in placewrite up", this.props)
     return (
       <div className="place-write-up">
         {/* <h3>{this.props.place.name}</h3>
