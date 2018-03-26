@@ -12,43 +12,64 @@ class UserMap extends Component {
   }
 
 display = () => {
-  // console.log("userARticles in display", this.props.userArticles)
-  // debugger
+
   if (this.props.userPlaces.length==0){
     return (
-      <div className="empty-user-map-container">
-        <span className="go-back-btn">
-          <h1>You don't have any places saved to your map.</h1>
-          <img className="usermap-woman"src="woman2.png"/>
-          <button className="usermap-btn" onClick={this.props.goHome}>Add Some!</button>
-        </span>
+      <div>
+        <script> location.hash = (location.hash) ? location.hash : " "; </script>
+          <div className="nav">
+            <p>just the spot</p>
+          </div>
+        <div className="empty-user-map-container">
+          <div className="left-panel-user-map">
+            <img className="usermap-img"src="pina.png"/>
+          </div>
+          <div className="right-panel-user-map">
+            <h1>You don't have any places saved to your map.</h1>
+            <span >
+              <button className="btn" onClick={this.props.goHome}>Add Some!</button>
+            </span>
+          </div>
+        </div>
       </div>)
   } else {
-    console.log("userplaces in display",this.props.userPlaces)
     return(
-      <div className="user-map-container">
-        <h1>My Map!</h1>
-      {/* <Map
-       google={this.props.google}
-       initialCenter={{lat:40.730610,lng:-73.935242}}
-       style={{ width: "75%", height: "75%", position: "relative" }}
-       className={"map"}
-       zoom={13}>
-       {this.createMarkers()}
-       <InfoWindow
-         // marker={this.state.activeMarker}
-         visible={this.state.showingInfoWindow}>
-         <div>
-           <h1>{this.state.selectedPlace.name}</h1>
-         </div>
-       </InfoWindow>
-      </Map> */}
-      <button className="usermap-btn" onClick={this.props.goHome}>Add More Places!</button>
-      <h4>My Articles</h4>
-      {this.createArticleList()}
-      <h4>My Places</h4>
-      {this.createPlaceList()}
-    </div>
+      <div>
+          <div className="nav">
+            <p>just the spot</p>
+          </div>
+        <div className="user-map-container">
+          <div className="user-map">
+            <h1>My Map!</h1>
+            <Map
+              google={this.props.google}
+              initialCenter={this.props.userPlaces.length>0 ?
+                {lat:this.props.userPlaces[0].latitude,lng:this.props.userPlaces[0].longitude} : {lat:40.730610,lng:-73.935242}}
+              style={{ width: "75%", height: "75%", position: "relative" }}
+              className={"map-in-article"}
+              zoom={11}>
+              {this.createMarkers()}
+              <InfoWindow
+               // marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}>
+                <div>
+                  <h1>{this.state.selectedPlace.name}</h1>
+                </div>
+              </InfoWindow>
+            </Map>
+            <button className="btn user-map-add-places" onClick={this.props.goHome}>Add More Places!</button>
+          </div>
+
+          <div className="my-articles-list">
+            <p>My Articles</p>
+            {this.createArticleList()}
+          </div>
+          <div className="my-places-list">
+            <p>My Places</p>
+            {this.createPlaceList()}
+          </div>
+        </div>
+      </div>
     )
   }
 }
@@ -60,8 +81,8 @@ handleInfoMarker = (place,marker) => {
 }
 
   createMarkers = () => {
-    if (this.props.userPlaces[0].length>0)
-    {return this.props.userPlaces[0].map(place => {
+    console.log("in create markerts, user places", this.props.userPlaces)
+    return this.props.userPlaces.map(place => {
        return <Marker
                 key={place.id}
                 title={`title ${place.name}`}
@@ -69,18 +90,18 @@ handleInfoMarker = (place,marker) => {
                 position={{lat:place.latitude,lng:place.longitude}}
                 onClick={() => this.handleInfoMarker(place,place.id)}
               />
-    })}
+    })
   }
 
   createArticleList = () => {
     return this.props.userArticles.map(article => {
-      return <p key={article.id} onClick={()=>this.props.changeCurrentArticle(article)}> {article.title} </p>
+      return <h4 key={article.id} onClick={()=>this.props.changeCurrentArticle(article)}> {article.title} </h4>
     })
   }
   //
   createPlaceList = () => {
     return this.props.userPlaces.map(place => {
-      return <p key={place.id}> {place.name} </p>
+      return <h4 key={place.id}> {place.name} </h4>
     })
   }
 

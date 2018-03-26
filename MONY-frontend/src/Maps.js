@@ -87,13 +87,13 @@ class Maps extends React.Component {
     return (
 
        <div className="right-panel">
-         <div className="map">
-           <Map
+         <div className="map-article-view">
+           <Map className={"map-in-article"}
              google={this.props.google}
              initialCenter={this.props.currentPlaces.length>0 ?
                {lat:this.props.currentPlaces[0].latitude,lng:this.props.currentPlaces[0].longitude} : {lat:40.730610,lng:-73.935242}}
-             style={{ width: "50%", height: "50%", position: "relative" }}
-             className={"map"}
+             style={{ width: "100%", height: "100%", position: "relative" }}
+
              zoom={12}
            >
               {this.createMarkers()}

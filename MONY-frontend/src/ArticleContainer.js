@@ -9,11 +9,13 @@ class ArticleContainer extends Component {
   render() {
     console.log("current places in article container", this.props.currentPlaces)
     return (
-      <div className="article-container">
-        <span className="go-back-btn btn">
-          <button  onClick={this.props.goHome}>Go Back!</button>
-        </span>
-        <Article/>
+      <div>
+        <div className="nav">
+          <p>just the spot</p>
+        </div>
+        <div className="article-container">
+          <Article/>
+        </div>
       </div>
     );
   }

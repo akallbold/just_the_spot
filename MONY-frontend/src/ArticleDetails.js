@@ -4,7 +4,9 @@ import {saveArticleToUser, removeArticleFromUser, changeUserMapView} from './act
 
 class ArticleDetails extends Component {
 
-
+// createArrayWithAllPlaces=()=>{
+//
+// }
 
 buttonDisplay = () => {
   let arrayWithoutArticle = this.props.userArticles.filter(articleObj => {
@@ -30,15 +32,14 @@ buttonDisplay = () => {
     console.log("userarticles in article details render", this.props.userArticles)
     return (
       <div className="article-details-mini">
-        <h4>{this.props.currentArticle.title}</h4>
-        <p>{this.props.currentArticle.description}</p>
-        {this.buttonDisplay()}
+        <h1 className="article-name">{this.props.currentArticle.title}</h1>
+        <h4>{this.props.currentArticle.description}</h4>
 
-        <span className="view-usermap-btn btn">
-          <button  onClick={this.props.changeUserMapView}>View my Map!</button>
-        </span>
-        <img alt="grubstreet logo" src="grubstreet.png"/>
+
+        <div>
+        <img className="grubstreet" alt="grubstreet logo" src="gs.png"/>
         <p>Thank you to Grubstreet for the delicious photos and scintillating writeups.</p>
+      </div>
       </div>
     );
   }
@@ -48,7 +49,7 @@ const mapStateToProps = (state) => {
   return {
     currentPlaces:state.currentPlaces,
     currentArticle:state.currentArticle,
-    userArticles:state.userArticles
+    userArticles:state.userArticles, userPlaces:state.userPlaces
   }
 
 }

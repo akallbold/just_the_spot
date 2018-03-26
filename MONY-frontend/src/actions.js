@@ -74,17 +74,7 @@ export function fetchGeocode(place) {
   })
 }
 
-export function saveGeocode(place) {
-  fetch(`http://localhost:3000/places/${place.id}`, {
-    method:"POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      address:place.address,
-      latitude:place.latitude,
-      longitude:place.longitude
-      })
-  })
-}
+
 
 export function fetchPlaces() {
   return function (dispatch){
@@ -143,6 +133,18 @@ export let saveArticleToUser = (article) => {
     type:"SAVE_ARTICLE_TO_USER",
     payload:article
   }
+}
+
+export function saveGeocode(place) {
+  fetch(`http://localhost:3000/places/${place.id}`, {
+    method:"POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      address:place.address,
+      latitude:place.latitude,
+      longitude:place.longitude
+      })
+  })
 }
 
 export let savePlacesToUser = () => {

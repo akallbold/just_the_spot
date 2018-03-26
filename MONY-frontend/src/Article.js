@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
 import Maps from "./Maps"
-import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser} from './actions'
+import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser, saveArticleToUser, changeUserMapView, removeArticleFromUser, goHome} from './actions'
 import ArticleDetails from './ArticleDetails'
 import PlaceWriteUpList from './PlaceWriteUpList'
 
@@ -11,13 +11,48 @@ class Article extends Component {
     this.props.fetchCurrentPlaces(this.props.currentArticle)
   }
 
+//   $(document).ready(function(){
+//     $(this).scrollTop(0);
+// });
+
+  createPlaceDescriptionElements = () =>{
+    return this.props.currentPlaces.map(place=>{
+      return (
+         <div className="place-details">
+          <h1>{place.name}</h1>
+          <h3>{place.address}</h3>
+          <h4>{place.description}</h4>
+        </div>
+      )
+    })
+  }
+
+  buttonDisplay = () => {
+    let arrayWithoutArticle = this.props.userArticles.filter(articleObj => {
+      return articleObj.id !== this.props.currentArticle.id
+    })
+
+    if (this.props.userArticles.find(articleObj => {return articleObj.id === this.props.currentArticle.id})) {
+      return (<button className="btn"
+                onClick= {()=>this.props.removeArticleFromUser(arrayWithoutArticle)}
+                >Remove from my Map
+             </button>)
+    } else {
+      return (<button className="btn"
+                onClick= {()=>this.props.saveArticleToUser(this.props.currentArticle)}
+                >Save to my Map
+             </button>)
+    }
+
+  }
+
   render() {
     return (
       <div className="article-main">
-        <img alt="yum- article cover" className="main-article-img" src= {this.props.currentArticle.img}/>
+        <img alt="article cover" className="main-article-img" src= {this.props.currentArticle.img}/>
         <div className="article-map-details">
           <div className="article-map">
-            {/* <Maps
+            <Maps
               currentPlaces={this.props.currentPlaces}
               currentArticle={this.props.currentArticle}
               userArticles={this.props.userArticles}
@@ -28,12 +63,26 @@ class Article extends Component {
               showingInfoWindow= {this.props.selectedPlace}
               fetchSaveArticleToUser={this.props.fetchSaveArticleToUser}
               fetchSavePlacesToUser ={this.props.fetchSavePlacesToUser}
-            /> */}
+            />
           </div>
           <div className="article-details">
             <ArticleDetails changeUserMapView={this.props.changeUserMapView}/>
-            <PlaceWriteUpList/>
+            {/* <PlaceWriteUpList/> */}
           </div>
+
+        </div>
+        <div className="article-btns">
+          {this.buttonDisplay()}
+          <span className="btn">
+            <button  onClick={this.props.changeUserMapView}>View my Map!</button>
+          </span>
+          <span className="btn">
+            <button  onClick={this.props.goHome}>Go Back!</button>
+          </span>
+          {/* <PlaceWriteUpList/> */}
+        </div>
+        <div className="place-descriptions">
+          {this.createPlaceDescriptionElements()}
         </div>
       </div>
     );
@@ -52,4 +101,4 @@ const mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps, { fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser })(Article);
+export default connect(mapStateToProps, { fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser, saveArticleToUser, changeUserMapView, removeArticleFromUser, goHome })(Article);

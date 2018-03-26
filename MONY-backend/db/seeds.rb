@@ -31,6 +31,7 @@ list_array[8..-1].each_with_index do |list_item,art_index|
           if (regex_match == 0) && (name.length < 4)
             byebug
             name = place.children[1].children.text
+            
             if name == ""
               byebug
               name = place.children[2].children.text

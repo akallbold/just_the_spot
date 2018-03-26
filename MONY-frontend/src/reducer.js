@@ -31,8 +31,9 @@ const monyReducer = (state = defaultState, action) => {
     case "SAVE_ARTICLES":
       return {...state, allArticles:action.payload}
     case "SAVE_ARTICLE_TO_USER":
+    let relevantArray = state.userPlaces.concat(state.currentPlaces)
       return {...state, userArticles:[...state.userArticles, action.payload],
-                        userPlaces:[...state.userPlaces,state.currentPlaces]}
+                        userPlaces:relevantArray}
     case "SAVE_CURRENT_PLACES":
       return {...state, currentPlaces:action.payload}
     case "SAVE_PLACES":

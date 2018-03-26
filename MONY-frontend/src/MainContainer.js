@@ -46,6 +46,7 @@ class MainContainer extends Component {
   }
 
   render() {
+    console.log("userPLaces",this.props.userPlaces)
     return (
       <div className="main-container">
         {this.display()}
