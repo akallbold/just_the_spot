@@ -9,7 +9,7 @@ class SearchPanel extends Component {
     return (
 
       <div className="search-bar">
-        <p>searchbarcontainter</p>
+        {/* <p>searchbarcontainter</p> */}
         <span className="search-bar-text">
           <h4>Search for a "Best of" list or by Place</h4>
         </span>

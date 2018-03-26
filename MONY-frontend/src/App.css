@@ -1,8 +1,6 @@
 
-
-
 .body{
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
 }
 
 .main-container{
@@ -10,63 +8,97 @@
   flex-direction:column;
   justify-content: flex-start;
 
-  border: black 5px solid;
+  /* border: black 5px solid; */
   min-width: 100%;
   min-height: 100%;
 }
 
   .home{
     font-size: 90px;
-    display:block;
+    text-align: center;
+    display:flex;
+    justify-content: space-between;
     font-family: 'Anton', sans-serif;
     background-color: #ACDBC9;
     color: white;
     min-width: 100%;
-    min-height: 800px;
+    min-height: 1000px;
+
+  }
+  /* .hungry {padding-left: 400px;}
+  .thirsty {padding-left: 300px;}
+  .bored {padding-left: 200px;} */
+  /* .dont-know{padding-left: 00px;} */
+  .woman-picture{
+    float: left;
+    max-height: 1000px;
+  }
+
+  .home-text{
+    margin:auto;
   }
 
   .search-view{
-    border: black 5px solid;
+    /* border: black 5px solid; */
     display:block;    min-width: 100%;
     min-height: 800px;
-    background: #F7A7A6;
     color: white;
+    font-family: 'Anton', sans-serif;
   }
 
     .search-bar{
       display: inline-flex;
-      border: black 5px solid;
+      /* border: black 5px solid; */
       display: flex;
       justify-content: center;
-      height: 10%;
+      height: 300px;
       min-width: 100%;
-      background: #F48B94;
+      /* background: #F48B94; */
       color: white;
+      /* background-image: url("cherries-small.jpg");
+      background-repeat: repeat; */
+      background-color: #fdfd96;
+      font-size: 100px;
     }
       .search-bar-text{
         display: block;
         width: 80%;
+        color: #4f495e;
+        text-align: center;
+        margin:auto;
+        font-size: 50px;
+        /* align-items:center; */
+        /* border: black 5px solid; */
+
       }
 
       .search-form{
-          border: black 5px solid;
+          /* border: black 5px solid; */
         display: block;
         width: 100%;
-        color: black;
+        height:100%;
+        color: #4f495e;
+        /* background-color: rgba(255,255,255,.5) */
+        margin:40px;
       }
 
       .view-usermap-btn{
         width: 20%;
-        color: black;
+        color: #4f495e;
+        font-size: 50px;
+        margin:40px;
       }
 
     .article-preview-list{
       display:flex;
       flex-direction:row;
       justify-content: space-between;
-      border: black 5px solid;
+      /* border: black 5px solid; */
       flex-shrink: 1;
-      flex-wrap: wrap
+      flex-wrap: wrap;
+      font-size: 20px;
+      background: #F7A7A6;
+      color: #4f495e;
     }
 
       .article-preview{
@@ -76,14 +108,25 @@
         flex-direction:column;
         align-content: center;
         justify-content: center;
-        width:20%;
-        height:300px;
-        background: rgba(255, 255, 255, 0.5);
+        align-items: center;
+        width:300px;
+        /* height:300px; */
+
         margin:35px;
       }
 
+      .article-not-yet-added{
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .article-already-added{
+        background: rgba(0, 0, 0, 0.4);
+      }
+
       .article-preview-img{
-        align-items: center;
+        /* align-items: center; */
+        /* align-content: center; */
+        /* justify-content: center; */
         width:90%;
         /* height:75%; */
       }
@@ -92,9 +135,11 @@
       display:flex;
       flex-direction:row;
       justify-content: space-between;
-      border: black 5px solid;
+      /* border: black 5px solid; */
       flex-shrink: 1;
-      flex-wrap: wrap
+      flex-wrap: wrap;
+      background-image: url("pineapples.jpg");
+      color: #4f495e;
     }
 
       .place-preview{
@@ -108,6 +153,7 @@
         height:300px;
         background: rgba(255, 255, 255, 0.5);
         margin:35px;
+        font-size: 20px;
       }
   .article-container{
 background-color: #FDD2B5;
@@ -158,10 +204,45 @@ align-items: center;
   width:40%;
   /* margin:10px */
 }
+.view-article-btn{
+  margin: 5px;
+}
 
 .add-remove-map-to-user-btn{
   margin: 5px;
-  padding: 10px;
+  /* padding: 10px; */
+}
+
+.empty-user-map-container{
+  align-items:center;
+
+  font-family: 'Anton', sans-serif;
+  background-color: #ACDBC9;
+  font-size:50px;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.usermap-woman{
+  height:500px;
+}
+.usermap-btn{
+  margin:20px
+}
+
+.user-map-container{
+  display:flex;
+  /* align-items:center; */
+  font-family: 'Anton', sans-serif;
+  background-color: #ACDBC9;
+  font-size:50px;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.btn{
+  color: #4f495e;
+  font-size: 50px;
 }
 
 

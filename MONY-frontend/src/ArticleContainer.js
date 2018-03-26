@@ -10,7 +10,7 @@ class ArticleContainer extends Component {
     console.log("current places in article container", this.props.currentPlaces)
     return (
       <div className="article-container">
-        <span className="go-back-btn">
+        <span className="go-back-btn btn">
           <button  onClick={this.props.goHome}>Go Back!</button>
         </span>
         <Article/>

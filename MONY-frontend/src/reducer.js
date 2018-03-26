@@ -13,7 +13,7 @@ const defaultState = {
 const monyReducer = (state = defaultState, action) => {
   switch (action.type) {
     case "CHANGE_CURRENT_ARTICLE":
-      return {...state,currentArticle:action.payload}
+      return {...state,currentArticle:action.payload, userMapView:false}
     case "CHANGE_CURRENT_PLACES":
       return {...state,currentPlaces:action.payload}
     case "CHANGE_SEARCH_TERM":
@@ -23,7 +23,7 @@ const monyReducer = (state = defaultState, action) => {
     case "CHANGE_USER_MAP_VIEW":
       return {...state, userMapView:!state.userMapView}
     case "GO_HOME":
-      return {...state, userMapView:false, currentArticle:false}
+      return {...state, userMapView:false, currentArticle:false, searchTerm:""}
     case "REMOVE_CURRENT_ARTICLE":
       return {...state, currentArticle:""}
     case "REMOVE_ARTICLE_FROM_USER":
@@ -31,7 +31,8 @@ const monyReducer = (state = defaultState, action) => {
     case "SAVE_ARTICLES":
       return {...state, allArticles:action.payload}
     case "SAVE_ARTICLE_TO_USER":
-      return {...state, userArticles:[...state.userArticles, action.payload]}
+      return {...state, userArticles:[...state.userArticles, action.payload],
+                        userPlaces:[...state.userPlaces,state.currentPlaces]}
     case "SAVE_CURRENT_PLACES":
       return {...state, currentPlaces:action.payload}
     case "SAVE_PLACES":

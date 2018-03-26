@@ -31,7 +31,7 @@ class Article extends Component {
             /> */}
           </div>
           <div className="article-details">
-            <ArticleDetails/>
+            <ArticleDetails changeUserMapView={this.props.changeUserMapView}/>
             <PlaceWriteUpList/>
           </div>
         </div>

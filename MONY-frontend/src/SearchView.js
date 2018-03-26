@@ -9,7 +9,7 @@ class SearchView extends Component {
   render() {
     return (
       <div className="search-view">
-        <p>searchviewcontainter</p>
+        {/* <p>searchviewcontainter</p> */}
         <SearchPanel/>
         <ArticleList/>
         <hr/>

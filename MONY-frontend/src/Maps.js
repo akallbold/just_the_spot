@@ -31,7 +31,7 @@ class Maps extends React.Component {
        return <Marker
                 key={place.id}
                 // title={`title ${place.name}`}
-                name={`name ${place.name}`}
+                // name={`name ${place.name}`}
                 position={{lat:place.latitude,lng:place.longitude}}
                 onClick={() => this.handleInfoMarker(place,place.id)}
               />

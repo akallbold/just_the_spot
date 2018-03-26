@@ -128,7 +128,7 @@ export function fetchSavePlacesToUser(user_id) {
 }
 
 export let removeArticleFromUser = (articleArray) => {
-  console.log("in remove removeArticlefrom user in actions")
+  console.log("payload", articleArray)
   return {
     type:"REMOVE_ARTICLE_FROM_USER",
     payload:articleArray

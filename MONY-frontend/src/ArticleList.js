@@ -22,7 +22,7 @@ class ArticleList extends Component {
 
     return (
       <div className="article-preview-list">
-        <p>Article List Container</p>
+        {/* <p>Article List Container</p> */}
         {this.createElements()}
       </div>
     );

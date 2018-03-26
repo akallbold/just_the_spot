@@ -6,7 +6,7 @@ import SearchPanel from "./SearchPanel"
 import ArticleContainer from "./ArticleContainer"
 import UserMap from "./UserMap"
 import {connect} from "react-redux"
-import { fetchArticles, fetchPlaces } from "./actions"
+import { fetchArticles, fetchPlaces, goHome, changeCurrentArticle } from "./actions"
 // import PlaceList from "./PlaceList"
 import Home from "./Home"
 import SearchView from "./SearchView"
@@ -14,6 +14,7 @@ import SearchView from "./SearchView"
 class MainContainer extends Component {
 
   componentDidMount = () => {
+    console.log("in user main container component did mount. showing userPlaces", this.props.userPlaces)
     this.props.fetchArticles()
     this.props.fetchPlaces()
   }
@@ -21,17 +22,18 @@ class MainContainer extends Component {
   display = () => {
     if (this.props.userMapView){
       return  (<div className="usermap-container">
-                <SearchPanel/>
                 <UserMap
                   userPlaces={this.props.userPlaces}
                   userArticles={this.props.userArticles}
                   user={this.props.user}
+                  goHome={this.props.goHome}
+                  changeCurrentArticle={this.props.changeCurrentArticle}
+                  currentArticle={this.props.currentArticle}
                 />
                </div>)
     } else {
       if (this.props.currentArticle) {
         return (<div className="article-container">
-                  {/* <SearchPanel/> */}
                   <ArticleContainer/>
                </div>)
       } else {
@@ -72,4 +74,4 @@ const mapStateToProps = (state) => {
 //   return {dispatchUpdateSearchTerm: dispatch(this.updateSearchTerm)}
 // }
 
-export default connect(mapStateToProps, { fetchArticles, fetchPlaces })(MainContainer);
+export default connect(mapStateToProps, { fetchArticles, fetchPlaces, goHome, changeCurrentArticle })(MainContainer);
