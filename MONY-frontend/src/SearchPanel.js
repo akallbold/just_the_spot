@@ -9,8 +9,9 @@ class SearchPanel extends Component {
     return (
 
       <div className="search-bar">
-        <span className="view-usermap-btn">
-          <button  onClick={this.props.changeUserMapView}>View my Map!</button>
+        <span className="view-usermap-btn btn">
+          <button  onClick={this.props.changeUserMapView}
+            >View my Map!</button>
         </span>
         <h1 className="or-text">OR</h1>
         <span className="search-form">

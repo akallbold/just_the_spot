@@ -11,8 +11,11 @@ margin:10px;
 .nav{
 max-height:10%;
 background-color: white;
-color: #ACDBC9;
-font-size: 40px;
+}
+
+.logo{
+  height:50px;
+  margin: 0px 0px 10px 0px;
 }
 
 .home{
@@ -89,7 +92,7 @@ font-size: 100px;
 .article-preview-list{
 display:flex;
 flex-direction:row;
-justify-content: space-between;
+justify-content: flex-start;
 flex-shrink: 1;
 flex-wrap: wrap;
 font-size: 20px;
@@ -105,8 +108,16 @@ flex-direction:column;
 align-content: center;
 justify-content: center;
 align-items: center;
-width:300px;
+width:305px;
 margin:35px;
+border-radius: 25px;
+padding: 10px;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+}
+
+.article-preview:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .article-not-yet-added{
@@ -124,11 +135,12 @@ width:90%;
 .place-preview-list{
 display:flex;
 flex-direction:row;
-justify-content: space-between;
+justify-content: flex-start;
 flex-shrink: 1;
 flex-wrap: wrap;
 background-image: url("pineapples.jpg");
 color: #4f495e;
+
 }
 
 .place-preview{
@@ -143,7 +155,22 @@ height:300px;
 background: rgba(255, 255, 255, 0.5);
 margin:35px;
 font-size: 20px;
+padding: 10px;
+border-radius: 25px;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
 }
+
+.place-preview:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+
+
+
+
+
 
 .article-container{
 background-color: #FDD2B5;
@@ -188,6 +215,13 @@ margin: 100px 0px 0px 0px;
 .btn{
 color: #4f495e;
 font-size: 50px;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+border-radius: 25px;
+}
+
+.btn:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .user-map-add-places{
@@ -238,10 +272,16 @@ margin: 0px 0px 50px 0px;
 
 .view-article-btn{
 margin: 5px;
-width:100%;
+width:50%;
 display:flex;
 justify-content: space-around;
 align-content: center;
+padding: 0px;
+}
+
+.add-remove-map-to-user-btn{
+  width:50%;
+  padding: 0px;
 }
 
 .empty-user-map-container{

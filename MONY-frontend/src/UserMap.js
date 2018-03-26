@@ -22,7 +22,7 @@ display = () => {
       <div>
         <script> location.hash = (location.hash) ? location.hash : " "; </script>
           <div className="nav" onClick={this.props.goHome}>
-            <p>just the spot</p>
+            <img className="logo" alt="logo" src="logo.png"/>
           </div>
         <div className="empty-user-map-container">
           <div className="left-panel-user-map">
@@ -39,8 +39,8 @@ display = () => {
   } else {
     return(
       <div>
-          <div className="nav">
-            <p>just the spot</p>
+          <div className="nav" onClick={this.props.goHome}>
+          <img className="logo" alt="logo" src="logo.png"/>
           </div>
         <div className="user-map-container">
           <div className="user-map">
