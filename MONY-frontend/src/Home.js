@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {goHome} from './actions'
+import {connect} from "react-redux"
 
 
 class Home extends Component {
@@ -6,7 +8,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="nav">
+        <div className="nav" onClick={this.props.goHome}>
           <p>just the spot</p>
         </div>
         <div className="home">
@@ -17,13 +19,11 @@ class Home extends Component {
           <div className="home-text">
             <span className="hungry">Hungry?</span>
             <br></br>
-            <br></br>
             <span className="thirsty">Thirsty?</span>
-            <br></br>
             <br></br>
             <span className="bored">Bored?</span>
             <br></br>
-            <br></br>
+            <img className="chevron" alt="chevron" src="chevron.png"/>
             {/* <span className="dont-know">Don't know where to go?</span> */}
           </div>
         </div>
@@ -33,4 +33,11 @@ class Home extends Component {
 
 }
 
-export default Home
+const mapStateToProps = (state) => {
+  return {
+
+  }
+
+}
+
+export default connect(mapStateToProps,{goHome })(Home);

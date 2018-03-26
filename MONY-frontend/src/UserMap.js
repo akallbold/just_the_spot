@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import { Map, InfoWindow, Marker, GoogleApiWrapper, goHome } from "google-maps-react";
 
 let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
 
@@ -11,13 +11,17 @@ class UserMap extends Component {
     activeMarker:{}
   }
 
+  componentDidMount = () => {
+    window.scrollTo(0,0)
+  }
+
 display = () => {
 
   if (this.props.userPlaces.length==0){
     return (
       <div>
         <script> location.hash = (location.hash) ? location.hash : " "; </script>
-          <div className="nav">
+          <div className="nav" onClick={this.props.goHome}>
             <p>just the spot</p>
           </div>
         <div className="empty-user-map-container">
@@ -46,7 +50,7 @@ display = () => {
               initialCenter={this.props.userPlaces.length>0 ?
                 {lat:this.props.userPlaces[0].latitude,lng:this.props.userPlaces[0].longitude} : {lat:40.730610,lng:-73.935242}}
               style={{ width: "75%", height: "75%", position: "relative" }}
-              className={"map-in-article"}
+              className={"map-in-user"}
               zoom={11}>
               {this.createMarkers()}
               <InfoWindow

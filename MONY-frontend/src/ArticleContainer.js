@@ -6,11 +6,15 @@ import Article from "./Article"
 
 
 class ArticleContainer extends Component {
+
+  componentDidMount = () => {
+    window.scrollTo(0,0)
+  }
   render() {
     console.log("current places in article container", this.props.currentPlaces)
     return (
       <div>
-        <div className="nav">
+        <div className="nav" onClick={this.props.goHome}>
           <p>just the spot</p>
         </div>
         <div className="article-container">
