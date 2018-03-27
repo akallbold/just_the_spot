@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :places
 
   post '/login', to: 'auth#login'
+  post '/decode', to: 'auth#decode'
   get '/article', to: 'articles#index'
   post '/users/:id/articles', to: 'user_articles#create'
   get '/users/:id/articles', to: 'user_places#index'

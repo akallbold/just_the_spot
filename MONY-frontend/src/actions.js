@@ -3,7 +3,6 @@ let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
 
 
 export let changeCurrentArticle = (article) => {
-  console.log("article in changecurrent article action", article)
   return {
     type:"CHANGE_CURRENT_ARTICLE",
     payload: article
@@ -43,6 +42,36 @@ export function fetchArticles() {
     .then(data => {
       dispatch({type:"SAVE_ARTICLES", payload:data})
     })
+  }
+}
+
+export function fetchCurrentUser() {
+  return function (dispatch){
+    fetch(`http://localhost:3000/decode`, {
+      method:"POST",
+      headers:{ "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token: localStorage.getItem("token")
+      })
+    }).then(response => response.json())
+      .then(data=>{
+        dispatch({type:"SET_CURRENT_USER", payload:data})
+      })
+  }
+}
+
+
+export function fetchLogin(username,password) {
+  return function (dispatch){
+    fetch(`http://localhost:3000/login`, {
+      method:"POST",
+      headers:{ "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    }).then(response => response.json())
+      .then(data=>{
+        localStorage.setItem("token",data.token)
+        dispatch({type:"SET_CURRENT_USER", payload:data})
+      })
   }
 }
 
@@ -115,6 +144,19 @@ export function fetchSavePlacesToUser(user_id) {
 //       dispatch({type:"SAVE_USER_PLACES", payload:data})
 //     })
 //   }
+}
+
+export let findArticleForPlace = (selectPlace, allArticles) => {
+  return allArticles.find(article => {
+    return selectPlace.article_id == article.id
+  })
+}
+
+export let logOut = () => {
+  localStorage.clear()
+  return {
+    type:"LOGOUT"
+  }
 }
 
 export let removeArticleFromUser = (articleArray) => {

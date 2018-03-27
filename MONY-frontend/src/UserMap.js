@@ -15,12 +15,17 @@ class UserMap extends Component {
     window.scrollTo(0,0)
   }
 
-display = () => {
+  // articleForPlace = () => {
+  //   return this.props.allArticles.find(article => {
+  //     return this.state.selectedPlace.article_id == article.id
+  //   })
+  // }
 
+display = () => {
   if (this.props.userPlaces.length==0){
     return (
       <div>
-        <script> location.hash = (location.hash) ? location.hash : " "; </script>
+        {/* <script> location.hash = (location.hash) ? location.hash : " "; </script> */}
           <div className="nav" onClick={this.props.goHome}>
             <img className="logo" alt="logo" src="logo.png"/>
           </div>
@@ -51,13 +56,15 @@ display = () => {
                 {lat:this.props.userPlaces[0].latitude,lng:this.props.userPlaces[0].longitude} : {lat:40.730610,lng:-73.935242}}
               style={{ width: "75%", height: "75%", position: "relative" }}
               className={"map-in-user"}
+              onClick={this.onMapClicked}
               zoom={11}>
               {this.createMarkers()}
               <InfoWindow
-               // marker={this.state.activeMarker}
+               marker={this.state.activeMarker}
                 visible={this.state.showingInfoWindow}>
                 <div>
-                  <h1>{this.state.selectedPlace.name}</h1>
+                  <h6>{this.state.selectedPlace.name}</h6>
+                  {/* <h6>{this.articleForPlace().title}</h6> */}
                 </div>
               </InfoWindow>
             </Map>
@@ -78,21 +85,40 @@ display = () => {
   }
 }
 
-handleInfoMarker = (place,marker) => {
+// this.onMarkerClick = this.onMarkerClick.bind(this);
+// this.onMapClicked = this.onMapClicked.bind(this);
+
+onMarkerClick = (props, marker, e) =>{
+  this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true
+  })
+}
+
+onMapClicked = (props) => {
+  if (this.state.showingInfoWindow) {
+    this.setState({
+      showingInfoWindow: false,
+      activeMarker: null
+    })
+  }
+}
+
+handleInfoMarker = (place, marker) => {
     this.setState({showingInfoWindow:!this.state.showingInfoWindow,
                    selectedPlace:place,
                    activeMarker:marker})
 }
 
   createMarkers = () => {
-    console.log("in create markerts, user places", this.props.userPlaces)
     return this.props.userPlaces.map(place => {
        return <Marker
                 key={place.id}
-                title={`title ${place.name}`}
-                name={`name ${place.name}`}
+                // title={`title ${place.name}`}
+                name={place.name}
                 position={{lat:place.latitude,lng:place.longitude}}
-                onClick={() => this.handleInfoMarker(place,place.id)}
+                onClick={this.onMarkerClick}
               />
     })
   }
@@ -116,16 +142,7 @@ handleInfoMarker = (place,marker) => {
     return (
       <div >
        <div >
-          {/* <Map
-           google={this.props.google}
-           initialCenter={{lat:40.730610,lng:-73.935242}}
-           style={{ width: "75%", height: "75%", position: "relative" }}
-           className={"map"}
-           zoom={13}> */}
-           {this.display()}
-          {/* </Map> */}
-          {/* {this.createArticleList()}
-          {this.createPlaceList()} */}
+          {this.display()}
         </div>
       </div>
     );}
