@@ -4,6 +4,32 @@ import {connect} from "react-redux"
 import {changeUser} from './actions'
 
 class Login extends Component {
+  state={
+    username:"",
+    password:""
+  }
+
+
+  fetchLogin =(username,password) => {
+    fetch(`http://localhost:3000/login`, {
+      method:"POST",
+      headers:{ "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    })
+  }
+
+
+handleChange = (event) => {
+  console.log("event",event)
+  this.setState({
+    [event.target.name]:event.target.value
+  })
+}
+
+
+
+
+
 //
 //   handleSubmit = (event) => {
 //     this.props.loginUser(event.target.value)
@@ -13,8 +39,9 @@ class Login extends Component {
     return (
       <div className="login" >
          <form onSubmit={this.handleSubmit}>
-            <label>Please enter your name:</label>
-            <input type="text" value={this.props.user.name}></input>
+            <label>Please enter your name and password:</label>
+            <input onChange={()=>this.handleChange()} name="username" type="text" value={this.state.username}></input>
+            <input onChange={()=>this.handleChange()} name="password" type="password" value={this.state.password}></input>
             <input type="button" value="Login"></input>
          </form>
       </div>

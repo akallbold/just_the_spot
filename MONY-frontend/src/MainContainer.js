@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-// import Login from "./Login"
+import Login from "./Login"
 import SearchPanel from "./SearchPanel"
 // import ArticleList from "./ArticleList"
 import ArticleContainer from "./ArticleContainer"
@@ -49,7 +49,8 @@ class MainContainer extends Component {
     console.log("userPLaces",this.props.userPlaces)
     return (
       <div className="main-container">
-        {this.display()}
+        {/* {this.display()} */}
+        <Login/>
       </div>
     );
   }
