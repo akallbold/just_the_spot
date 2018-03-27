@@ -9,8 +9,11 @@ margin:10px;
 }
 
 .nav{
-max-height:10%;
-background-color: white;
+  /* display: flex;
+  justify-content: space-between; */
+  align-content: center;
+  max-height:10%;
+  background-color: white;
 }
 
 .logo{

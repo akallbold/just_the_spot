@@ -9,6 +9,8 @@ class Article extends Component {
 
   componentDidMount(){
     this.props.fetchCurrentPlaces(this.props.currentArticle)
+      window.scrollTo(0,0)
+
   }
 
 //   $(document).ready(function(){

@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-import {goHome} from './actions'
+import {goHome, logOut} from './actions'
 import {connect} from "react-redux"
 
 
 class Home extends Component {
 
+  componentDidMount = () => {
+    window.scrollTo(0,0)
+  }
+
+
   render() {
     return (
       <div>
         <div className="nav" onClick={this.props.goHome}>
-          <img className="logo" alt="logo" src="logo.png"/>
+          <img
+            onClick={this.props.goHome} className="logo" alt="logo" src="logo.png"/>
+            {/* <button className='btn'
+              onClick={this.props.logOut} >Log Out</button> */}
         </div>
         <div className="home">
 
@@ -24,7 +32,7 @@ class Home extends Component {
             <span className="bored">Bored?</span>
             <br></br>
             <img className="chevron" alt="chevron" src="chevron.png"/>
-            {/* <span className="dont-know">Don't know where to go?</span> */}
+
           </div>
         </div>
       </div>
@@ -40,4 +48,4 @@ const mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps,{goHome })(Home);
+export default connect(mapStateToProps,{goHome, logOut })(Home);

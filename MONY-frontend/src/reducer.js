@@ -3,8 +3,9 @@ const defaultState = {
   allPlaces:[],
   currentArticle: false,
   currentPlaces:[],
+  login:"",
   searchTerm: "",
-  user:{name:"anna", id:1},
+  user:{},
   userArticles: [],
   userMapView: false,
   userPlaces: []
@@ -24,6 +25,10 @@ const monyReducer = (state = defaultState, action) => {
       return {...state, userMapView:!state.userMapView}
     case "GO_HOME":
       return {...state, userMapView:false, currentArticle:false, searchTerm:""}
+    case "LOGOUT":
+      return {...state, user:{}}
+    case "SET_CURRENT_USER":
+      return {...state, user:action.payload.user}
     case "REMOVE_CURRENT_ARTICLE":
       return {...state, currentArticle:""}
     case "REMOVE_ARTICLE_FROM_USER":
