@@ -37,7 +37,6 @@ min-height: 1000px;
 background: none;
 color: inherit;
 border: none;
-/* padding: 0; */
 font: inherit;
 cursor: pointer;
 outline: inherit;
@@ -46,12 +45,8 @@ font-size: 46px;
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 transition: 0.3s;
 border-radius: 25px;
-/* background-color: #fdfd96; */
 }
-/* .hungry {padding-left: 400px;}
-.thirsty {padding-left: 300px;}
-.bored {padding-left: 200px;} */
-/* .dont-know{padding-left: 00px;} */
+
 .woman-picture{
 float: left;
 max-height: 1000px;
@@ -63,6 +58,11 @@ margin:auto;
 
 .chevron{
   max-width: 150px;
+}
+
+.place-preview-chevron{
+  max-width: 150px;
+  padding: 0px 0px 0px 30px;
 }
 
 .search-view{
@@ -167,7 +167,7 @@ flex-direction:column;
 align-content: center;
 justify-content: center;
 width:20%;
-height:300px;
+height:200px;
 background: rgba(255, 255, 255, 0.5);
 margin:35px;
 font-size: 20px;
@@ -214,7 +214,7 @@ display: flex;
 justify-content: space-between;
 align-content: center;
 width: 60%;
-margin: 100px 0px 0px 0px;
+margin: 200px 0px 0px 0px;
 }
 
 .view-usermap-btn{
@@ -269,7 +269,7 @@ flex-wrap: wrap;
 
 .place-descriptions{
 max-width: 40%;
-margin: 175px 0px 0px 0px
+margin: 100px 0px 0px 0px
 }
 
 .place-details{

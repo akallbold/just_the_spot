@@ -21,7 +21,6 @@ class PlaceList extends Component {
 
     return (
       <div className="place-preview-list">
-        <p>Place List Container</p>
         {this.createElements()}
       </div>
     );

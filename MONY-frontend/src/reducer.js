@@ -75,7 +75,6 @@ const monyReducer = (state = defaultState, action) => {
     default:
       return state
   }
-
 }
 
 export default monyReducer
