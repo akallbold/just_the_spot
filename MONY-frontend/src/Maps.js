@@ -17,25 +17,39 @@ class Maps extends React.Component {
   //   this.props.fetchCurrentPlaces(this.props.currentArticle)
   // }
 
-  handleInfoMarker = (place,marker) => {
-    // debugger
-      // this.setState({activeMarker:event.target})
-      this.setState({showingInfoWindow:!this.state.showingInfoWindow,
-                     selectedPlace:place,
-                     activeMarker:marker})
-  }
 
   createMarkers = () => {
     // console.log("In createMarkers")
     return this.props.currentPlaces.map(place => {
        return <Marker
                 key={place.id}
-                // title={`title ${place.name}`}
-                // name={`name ${place.name}`}
+                name={place.name}
                 position={{lat:place.latitude,lng:place.longitude}}
-                onClick={() => this.handleInfoMarker(place,place.id)}
+                onClick={this.onMarkerClick}
               />
     })
+  }
+  handleInfoMarker = (place, marker) => {
+      this.setState({showingInfoWindow:!this.state.showingInfoWindow,
+                     selectedPlace:place,
+                     activeMarker:marker})
+  }
+
+  onMarkerClick = (props, marker, e) =>{
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    })
+  }
+
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
   }
 
 
@@ -53,6 +67,7 @@ class Maps extends React.Component {
            >
               {this.createMarkers()}
               <InfoWindow
+               marker={this.state.activeMarker}
                 visible={this.state.showingInfoWindow}>
                 <div>
                   <h6>{this.state.selectedPlace.name}</h6>

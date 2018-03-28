@@ -11,7 +11,6 @@ class PlacePreview extends Component {
   }
 
   render() {
-    console.log("placeinfo", this.props)
     return (
       <span className="place-preview" onClick={()=>this.props.changeCurrentArticle(this.findArticleForPlace()[0])} >
         <p>{this.props.place.name}</p>

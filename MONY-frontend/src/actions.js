@@ -132,24 +132,6 @@ export function fetchSaveArticleToUser(article) {
  }
 }
 
-export function fetchSavePlacesToUser(user_id) {
-//   console.log("in fetchsaveplacestouser")
-//   return function (dispatch){
-//     fetch(`http://localhost:3000/users/1/places`)
-//     .then(response => response.json())
-//     .then(data => {
-//       console.log("data",data)
-//       dispatch({type:"SAVE_USER_PLACES", payload:data})
-//     })
-//   }
-}
-
-// export let findArticleForPlace = (selectPlace, allArticles) => {
-//   return allArticles.find(article => {
-//     return selectPlace.article_id == article.id
-//   })
-// }
-
 export let logOut = () => {
   localStorage.clear()
   return {
@@ -175,6 +157,7 @@ export let findArticleForPlace = (place) => {
     return article.id === place.article_id
   })
 }
+
 export let placesArray = () => {
   let relevantLists = this.props.allPlaces.filter(place => {
     return place.name.toUpperCase().includes(this.props.searchTerm.toUpperCase())
@@ -182,19 +165,21 @@ export let placesArray = () => {
 }
 
 
+export let removeArticleFromUserFromPreview = (article) => {
+  return {
+    type:"REMOVE_ARTICLE_FROM_USER_FROM_PREVIEW",
+    payload:article
+  }
+}
 
-
-
-
-export let removeArticleFromUser = (articleArray) => {
+export let removeArticleFromUser = (article) => {
   return {
     type:"REMOVE_ARTICLE_FROM_USER",
-    payload:articleArray
+    payload:article
   }
 }
 
 export let saveArticleToUserFromPreview = (article) => {
-  this.fetchCurrentPlaces(article)
   return {
     type:"SAVE_ARTICLE_TO_USER_FROM_PREVIEW",
     payload:article

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
-import {changeCurrentArticle, removeArticleFromUser, saveArticleToUser} from './actions'
+import {changeCurrentArticle, removeArticleFromUser, saveArticleToUser, saveArticleToUserFromPreview, removeArticleFromUserFromPreview} from './actions'
 
 
 class ArticlePreview extends Component {
@@ -19,7 +19,7 @@ class ArticlePreview extends Component {
                             >view article
                          </button>
                   <button className="add-remove-map-to-user-btn "
-                            onClick= {()=>this.props.removeArticleFromUser(arrayWithoutArticle)}
+                            onClick= {()=>this.props.removeArticleFromUserFromPreview(this.props.article)}
                             >remove from my map
                          </button>
 
@@ -35,7 +35,7 @@ class ArticlePreview extends Component {
                             >view article
                          </button>
                   <button className="add-remove-map-to-user-btn "
-                            onClick= {()=>this.props.saveArticleToUser(this.props.article)}
+                            onClick= {()=>this.props.saveArticleToUserFromPreview(this.props.article)}
                             >add to my map
                          </button>
               </span>
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {changeCurrentArticle, removeArticleFromUser, saveArticleToUser})(ArticlePreview);
+export default connect(mapStateToProps, {changeCurrentArticle, removeArticleFromUser, saveArticleToUser, saveArticleToUserFromPreview, removeArticleFromUserFromPreview})(ArticlePreview);

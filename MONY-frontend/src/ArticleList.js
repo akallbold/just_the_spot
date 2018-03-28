@@ -19,7 +19,8 @@ class ArticleList extends Component {
 
 
   render() {
-
+console.log("user articles", this.props.userArticles)
+console.log("user places", this.props.userPlaces)
     return (
       <div className="article-preview-list">
         {this.createElements()}
@@ -35,6 +36,7 @@ const mapStateToProps = (state) => {
       articleSearchArray:state.articleSearchArray,
       currentArticle: state.currentArticle,
       searchTerm: state.searchTerm,
+      userArticles:state.userArticles, userPlaces:state.userPlaces
   }
 }
 

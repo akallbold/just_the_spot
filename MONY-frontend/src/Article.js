@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
 import Maps from "./Maps"
-import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser, saveArticleToUser, changeUserMapView, removeArticleFromUser, goHome} from './actions'
+import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, saveArticleToUser, changeUserMapView, removeArticleFromUser, goHome} from './actions'
 import ArticleDetails from './ArticleDetails'
 import PlaceWriteUpList from './PlaceWriteUpList'
 
@@ -13,9 +13,10 @@ class Article extends Component {
 
   }
 
-//   $(document).ready(function(){
-//     $(this).scrollTop(0);
-// });
+  arrayWithoutArticle = () => this.props.userArticles.filter(articleObj => {
+    return articleObj.id !== this.props.currentArticle.id
+  })
+
 
   createPlaceDescriptionElements = () =>{
     return this.props.currentPlaces.map(place=>{
@@ -30,13 +31,15 @@ class Article extends Component {
   }
 
   buttonDisplay = () => {
+    console.log("in article userplaces", this.props.userPlaces)
+    console.log("in article userarticles", this.props.userArticles)
     let arrayWithoutArticle = this.props.userArticles.filter(articleObj => {
       return articleObj.id !== this.props.currentArticle.id
     })
 
     if (this.props.userArticles.find(articleObj => {return articleObj.id === this.props.currentArticle.id})) {
       return (<button className="btn"
-                onClick= {()=>this.props.removeArticleFromUser(arrayWithoutArticle)}
+                onClick= {()=>this.props.removeArticleFromUser(this.props.currentArticle)}
                 >remove from my map
              </button>)
     } else {
@@ -69,7 +72,6 @@ class Article extends Component {
           </div>
           <div className="article-details">
             <ArticleDetails changeUserMapView={this.props.changeUserMapView}/>
-            {/* <PlaceWriteUpList/> */}
           </div>
 
         </div>
@@ -97,9 +99,10 @@ const mapStateToProps = (state) => {
     currentArticle:state.currentArticle,
     selectedPlace:state.selectedPlace,
     showingInfoWindow:state.showingInfoWindow,
-    userArticles:state.userArticles
+    userArticles:state.userArticles,
+    userPlaces: state.userPlaces
   }
 
 }
 
-export default connect(mapStateToProps, { fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, fetchSavePlacesToUser, saveArticleToUser, changeUserMapView, removeArticleFromUser, goHome })(Article);
+export default connect(mapStateToProps, { fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, saveArticleToUser, changeUserMapView, removeArticleFromUser, goHome })(Article);
