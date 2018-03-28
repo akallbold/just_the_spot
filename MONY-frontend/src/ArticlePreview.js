@@ -6,6 +6,7 @@ import {changeCurrentArticle, removeArticleFromUser, saveArticleToUser} from './
 class ArticlePreview extends Component {
 
   display=()=>{
+
     let arrayWithoutArticle = this.props.userArticles.filter(articleObj => {
       return articleObj.id !== this.props.article.id
     })
@@ -15,11 +16,11 @@ class ArticlePreview extends Component {
                   <img alt="article cover" className="article-preview-img" src={this.props.article.img}/>
                   <button className="view-article-btn"
                             onClick= {()=>this.props.changeCurrentArticle(this.props.article)}
-                            >View Article
+                            >view article
                          </button>
                   <button className="add-remove-map-to-user-btn "
                             onClick= {()=>this.props.removeArticleFromUser(arrayWithoutArticle)}
-                            >Remove from my Map
+                            >remove from my map
                          </button>
 
               </span>
@@ -31,11 +32,11 @@ class ArticlePreview extends Component {
                   <img alt="article cover" className="article-preview-img" src={this.props.article.img}/>
                   <button className="view-article-btn"
                             onClick= {()=>this.props.changeCurrentArticle(this.props.article)}
-                            >View Article
+                            >view article
                          </button>
                   <button className="add-remove-map-to-user-btn "
                             onClick= {()=>this.props.saveArticleToUser(this.props.article)}
-                            >Save to my Map
+                            >add to my map
                          </button>
               </span>
       )

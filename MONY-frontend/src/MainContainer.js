@@ -30,6 +30,7 @@ class MainContainer extends Component {
                   findArticleForPlace={this.props.findArticleForPlace}
                   allArticles={this.props.allArticles}
                   allPlaces={this.props.allPlaces}
+                  logOut={this.props.logOut}
                 />
                </div>)
     } else {

@@ -16,8 +16,7 @@ class Home extends Component {
         <div className="nav" onClick={this.props.goHome}>
           <img
             onClick={this.props.goHome} className="logo" alt="logo" src="logo.png"/>
-            {/* <button className='btn'
-              onClick={this.props.logOut} >Log Out</button> */}
+          <img  src="logout.png" onClick={this.props.logOut}/>
         </div>
         <div className="home">
 

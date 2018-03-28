@@ -1,6 +1,7 @@
 const defaultState = {
   allArticles: [],
   allPlaces:[],
+  articleSearchArray:[],
   currentArticle: false,
   currentPlaces:[],
   login:"",
@@ -39,6 +40,8 @@ const monyReducer = (state = defaultState, action) => {
     let relevantArray = state.userPlaces.concat(state.currentPlaces)
       return {...state, userArticles:[...state.userArticles, action.payload],
                         userPlaces:relevantArray}
+    case "SAVE_ARTICLE_TO_USER_FROM_PREVIEW":
+      return {...state, userArticles:[...state.userArticles, action.payload]}
     case "SAVE_CURRENT_PLACES":
       return {...state, currentPlaces:action.payload}
     case "SAVE_PLACES":
@@ -49,6 +52,8 @@ const monyReducer = (state = defaultState, action) => {
       return {...state, userArticles:[...state.userArticles,state.currentArticle]}
     case "SAVE_USER_PLACES":
       return {...state, userPlaces:action.payload}
+      case "UPDATE_ARTICLE_SEARCH_ARRAY":
+        return {...state, articleSearchArray:action.payload}
     default:
       return state
   }

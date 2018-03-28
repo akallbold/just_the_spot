@@ -22,7 +22,6 @@ class ArticleList extends Component {
 
     return (
       <div className="article-preview-list">
-        {/* <p>Article List Container</p> */}
         {this.createElements()}
       </div>
     );
@@ -33,6 +32,7 @@ const mapStateToProps = (state) => {
   return {
       allArticles: state.allArticles,
       allPlaces:state.allPlaces,
+      articleSearchArray:state.articleSearchArray,
       currentArticle: state.currentArticle,
       searchTerm: state.searchTerm,
   }

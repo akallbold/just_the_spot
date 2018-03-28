@@ -144,11 +144,11 @@ export function fetchSavePlacesToUser(user_id) {
 //   }
 }
 
-export let findArticleForPlace = (selectPlace, allArticles) => {
-  return allArticles.find(article => {
-    return selectPlace.article_id == article.id
-  })
-}
+// export let findArticleForPlace = (selectPlace, allArticles) => {
+//   return allArticles.find(article => {
+//     return selectPlace.article_id == article.id
+//   })
+// }
 
 export let logOut = () => {
   localStorage.clear()
@@ -157,10 +157,47 @@ export let logOut = () => {
   }
 }
 
+export let articleArray = () => {
+  let relevantArticles = this.props.allArticles.filter(article => {
+    return article.title.toUpperCase().includes(this.props.searchTerm.toUpperCase())
+  })
+  let relevantArticlesArray = this.placesArray().map(place=>{
+    this.findArticleForPlace(place)
+  })
+  let displayArticles = relevantArticles.concat(relevantArticlesArray)
+  return {
+    type:"UPDATE_ARTICLE_SEARCH_ARRAY", payload:displayArticles
+  }
+}
+
+export let findArticleForPlace = (place) => {
+  return this.props.allArticles.filter(article => {
+    return article.id === place.article_id
+  })
+}
+export let placesArray = () => {
+  let relevantLists = this.props.allPlaces.filter(place => {
+    return place.name.toUpperCase().includes(this.props.searchTerm.toUpperCase())
+  })
+}
+
+
+
+
+
+
 export let removeArticleFromUser = (articleArray) => {
   return {
     type:"REMOVE_ARTICLE_FROM_USER",
     payload:articleArray
+  }
+}
+
+export let saveArticleToUserFromPreview = (article) => {
+  this.fetchCurrentPlaces(article)
+  return {
+    type:"SAVE_ARTICLE_TO_USER_FROM_PREVIEW",
+    payload:article
   }
 }
 

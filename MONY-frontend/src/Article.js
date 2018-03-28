@@ -37,12 +37,12 @@ class Article extends Component {
     if (this.props.userArticles.find(articleObj => {return articleObj.id === this.props.currentArticle.id})) {
       return (<button className="btn"
                 onClick= {()=>this.props.removeArticleFromUser(arrayWithoutArticle)}
-                >Remove from my Map
+                >remove from my map
              </button>)
     } else {
       return (<button className="btn"
                 onClick= {()=>this.props.saveArticleToUser(this.props.currentArticle)}
-                >Save to my Map
+                >save to my map
              </button>)
     }
 
@@ -76,12 +76,11 @@ class Article extends Component {
         <div className="article-btns">
           {this.buttonDisplay()}
           <span className="btn">
-            <button  onClick={this.props.changeUserMapView}>View my Map!</button>
+            <img src="viewmymap4.png"  onClick={this.props.changeUserMapView}/>
           </span>
           <span className="btn">
-            <button  onClick={this.props.goHome}>Go Back!</button>
+            <img src="goback.png"  onClick={this.props.goHome}/>
           </span>
-          {/* <PlaceWriteUpList/> */}
         </div>
         <div className="place-descriptions">
           {this.createPlaceDescriptionElements()}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
-import {goHome} from './actions'
+import {goHome, logOut} from './actions'
 import Article from "./Article"
 
 
@@ -15,6 +15,7 @@ class ArticleContainer extends Component {
       <div>
         <div className="nav" onClick={this.props.goHome}>
           <img className="logo" alt="logo" src="logo.png"/>
+          <img  src="logout.png" onClick={this.props.logOut}/>
         </div>
         <div className="article-container">
           <Article/>
@@ -32,4 +33,4 @@ const mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps, { goHome })(ArticleContainer);
+export default connect(mapStateToProps, { goHome, logOut })(ArticleContainer);
