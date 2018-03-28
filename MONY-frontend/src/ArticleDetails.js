@@ -29,7 +29,6 @@ buttonDisplay = () => {
 
 
   render() {
-    console.log("userarticles in article details render", this.props.userArticles)
     return (
       <div className="article-details-mini">
         <h1 className="article-name">{this.props.currentArticle.title}</h1>

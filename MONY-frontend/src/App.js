@@ -8,7 +8,6 @@ class App extends Component {
 
   createElements = () => {
     if (this.props.user && localStorage.getItem("token")){
-      console.log("app props",this.props )
       return <MainContainer/>
     } else {
       return <Login/>

@@ -11,7 +11,6 @@ class ArticleContainer extends Component {
     window.scrollTo(0,0)
   }
   render() {
-    console.log("current places in article container", this.props.currentPlaces)
     return (
       <div>
         <div className="nav" onClick={this.props.goHome}>

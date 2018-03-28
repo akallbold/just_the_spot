@@ -29,6 +29,7 @@ class MainContainer extends Component {
                   currentArticle={this.props.currentArticle}
                   findArticleForPlace={this.props.findArticleForPlace}
                   allArticles={this.props.allArticles}
+                  allPlaces={this.props.allPlaces}
                 />
                </div>)
     } else {
@@ -46,7 +47,6 @@ class MainContainer extends Component {
   }
 
   render() {
-    console.log("user",this.props.user)
     return (
       <div className="main-container">
         {this.display()}

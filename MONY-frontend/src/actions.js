@@ -110,14 +110,12 @@ export function fetchPlaces() {
     fetch("http://localhost:3000/places")
     .then(response => response.json())
     .then(data => {
-      console.log("fetch places data", data)
       dispatch({type:"SAVE_PLACES", payload:data})
     })
   }
 }
 
 export function fetchSaveArticleToUser(article) {
-  console.log("in fetchsavearticlestouser")
   return function (dispatch){
     fetch(`http://localhost:3000/users/1/articles`, {
       method:"POST",
@@ -160,7 +158,6 @@ export let logOut = () => {
 }
 
 export let removeArticleFromUser = (articleArray) => {
-  console.log("payload", articleArray)
   return {
     type:"REMOVE_ARTICLE_FROM_USER",
     payload:articleArray
@@ -170,7 +167,6 @@ export let removeArticleFromUser = (articleArray) => {
 
 
 export let saveArticleToUser = (article) => {
-  console.log("in save article to user")
   return {
     type:"SAVE_ARTICLE_TO_USER",
     payload:article
@@ -190,14 +186,12 @@ export function saveGeocode(place) {
 }
 
 export let savePlacesToUser = () => {
-  console.log("in save places to user")
   return {
     type:"SAVE_PLACES_TO_USER"
   }
 }
 
 export let saveStuffToUser = (article,places) => {
-  console.log("in save stuff to user")
   saveArticleToUser(article)
   savePlacesToUser(places)
 }

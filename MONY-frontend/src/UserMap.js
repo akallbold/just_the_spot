@@ -8,18 +8,15 @@ class UserMap extends Component {
   state={
     showingInfoWindow:false,
     selectedPlace:{},
-    activeMarker:{}
+    activeMarker:{},
+    place:""
   }
 
   componentDidMount = () => {
     window.scrollTo(0,0)
   }
 
-  // articleForPlace = () => {
-  //   return this.props.allArticles.find(article => {
-  //     return this.state.selectedPlace.article_id == article.id
-  //   })
-  // }
+
 
 display = () => {
   if (this.props.userPlaces.length==0){
@@ -85,14 +82,19 @@ display = () => {
   }
 }
 
-// this.onMarkerClick = this.onMarkerClick.bind(this);
-// this.onMapClicked = this.onMapClicked.bind(this);
-
 onMarkerClick = (props, marker, e) =>{
+  let placeObj= this.props.allPlaces.find(place=>{
+    return place.name == props.name
+  })
+  console.log("marker click props", props)
+  console.log("marker click marker", marker)
+  console.log("marker click event", e)
+  console.log("marker click placeobj", placeObj)
   this.setState({
     selectedPlace: props,
     activeMarker: marker,
-    showingInfoWindow: true
+    showingInfoWindow: true,
+    place: placeObj
   })
 }
 
@@ -124,10 +126,31 @@ handleInfoMarker = (place, marker) => {
   }
 
   createArticleList = () => {
-    return this.props.userArticles.map(article => {
+    let relevantLists = this.props.userArticles
+    // debugger
+      if (this.state.showingInfoWindow) {
+        relevantLists = this.props.allArticles.find(article => {
+          console.log("place obj from state", this.state.place)
+          return this.state.place.article_id === article.id
+        })
+      }
+      // debugger
+    return relevantLists.map(article => {
       return <h4 key={article.id} onClick={()=>this.props.changeCurrentArticle(article)}> {article.title} </h4>
     })
   }
+
+
+  articleForPlace = () => {
+    return this.props.allArticles.find(article => {
+      return this.state.selectedPlace.article_id == article.id
+    })
+  }
+
+
+
+
+
   //
   createPlaceList = () => {
     return this.props.userPlaces.map(place => {
@@ -138,7 +161,6 @@ handleInfoMarker = (place, marker) => {
 
 
   render() {
-    (console.log("currentarticle", this.props.currentArticle))
     return (
       <div >
        <div >
