@@ -205,7 +205,7 @@ min-height: 1000px
 
 .article-map-details{
 display: flex;
-justify-content: space-around;
+justify-content: space-between;
 background-color:
 }
 
@@ -245,15 +245,16 @@ margin: 100px;
 }
 
 .map-in-article{
-max-width: 50%;
+max-width: 700px;
 max-height: 50%;
+/* margin: 0px 150px 0px 0px; */
 }
 
 
 .article-map{
 display: flex;
 width: 50%;
-margin:5px 10px 10px 10px
+margin:15px 100px 10px 150px
 }
 
 .article-details{
