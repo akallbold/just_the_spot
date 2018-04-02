@@ -36,9 +36,9 @@ buttonDisplay = () => {
 
 
         <div>
-        <img className="grubstreet" alt="grubstreet logo" src="gs.png"/>
-        <p>Thank you to Grubstreet for the delicious photos and scintillating writeups.</p>
-      </div>
+          <img className="grubstreet" alt="grubstreet logo" src="gs.png"/>
+          <p>Thank you to Grubstreet for the delicious photos and scintillating writeups.</p>
+        </div>
       </div>
     );
   }
@@ -48,7 +48,8 @@ const mapStateToProps = (state) => {
   return {
     currentPlaces:state.currentPlaces,
     currentArticle:state.currentArticle,
-    userArticles:state.userArticles, userPlaces:state.userPlaces
+    userArticles:state.userArticles
+    // userPlaces:state.userPlaces
   }
 
 }

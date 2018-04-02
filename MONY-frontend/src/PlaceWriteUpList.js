@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
-import { } from './actions'
+// import { } from './actions'
 import PlaceWriteUp from './PlaceWriteUp'
 
 class PlaceWriteUpList extends Component {
@@ -28,4 +28,4 @@ const mapStateToProps = (state) => {
 
 }
 
-export default connect(mapStateToProps,{})(PlaceWriteUpList);
+export default connect(mapStateToProps)(PlaceWriteUpList);

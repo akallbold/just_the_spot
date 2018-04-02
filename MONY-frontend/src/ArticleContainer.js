@@ -25,12 +25,14 @@ class ArticleContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentPlaces:state.currentPlaces,
-    currentArticle:state.currentArticle
-  }
+// const mapStateToProps = (state) => {
+//   return {
+//     currentPlaces:state.currentPlaces,
+//     currentArticle:state.currentArticle
+//   }
+//
+// }
 
-}
-
-export default connect(mapStateToProps, { goHome, logOut })(ArticleContainer);
+export default
+// connect(mapStateToProps, { goHome, logOut })
+(ArticleContainer);

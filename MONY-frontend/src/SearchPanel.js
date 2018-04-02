@@ -28,7 +28,7 @@ class SearchPanel extends Component {
 const mapStateToProps = (state) => {
   return {
       searchTerm: state.searchTerm,
-      userMapView: state.userMapView,
+      // userMapView: state.userMapView,
       user:state.user
   }
 }

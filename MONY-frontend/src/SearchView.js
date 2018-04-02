@@ -26,13 +26,15 @@ class SearchView extends Component {
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-      allArticles: state.allArticles,
-      allPlaces:state.allPlaces,
-      searchTerm: state.searchTerm,
-      articleArray:[]
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//       allArticles: state.allArticles,
+//       allPlaces:state.allPlaces,
+//       searchTerm: state.searchTerm,
+//       articleArray:[]
+//   }
+// }
 
-export default connect(mapStateToProps, {})(SearchView)
+export default
+// connect(mapStateToProps, {})
+(SearchView)

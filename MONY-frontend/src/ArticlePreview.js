@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
-import {changeCurrentArticle, removeArticleFromUser, saveArticleToUser, saveArticleToUserFromPreview, removeArticleFromUserFromPreview} from './actions'
+import {changeCurrentArticle, removeArticleFromUser, saveArticleToUserFromPreview, removeArticleFromUserFromPreview} from './actions'
 
 
 class ArticlePreview extends Component {
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {changeCurrentArticle, removeArticleFromUser, saveArticleToUser, saveArticleToUserFromPreview, removeArticleFromUserFromPreview})(ArticlePreview);
+export default connect(mapStateToProps, {changeCurrentArticle, removeArticleFromUser,saveArticleToUserFromPreview, removeArticleFromUserFromPreview})(ArticlePreview);

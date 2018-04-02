@@ -19,8 +19,6 @@ class ArticleList extends Component {
 
 
   render() {
-console.log("user articles", this.props.userArticles)
-console.log("user places", this.props.userPlaces)
     return (
       <div className="article-preview-list">
         {this.createElements()}
@@ -32,11 +30,11 @@ console.log("user places", this.props.userPlaces)
 const mapStateToProps = (state) => {
   return {
       allArticles: state.allArticles,
-      allPlaces:state.allPlaces,
-      articleSearchArray:state.articleSearchArray,
-      currentArticle: state.currentArticle,
-      searchTerm: state.searchTerm,
-      userArticles:state.userArticles, userPlaces:state.userPlaces
+      // allPlaces:state.allPlaces,
+      // articleSearchArray:state.articleSearchArray,
+      // currentArticle: state.currentArticle,
+      searchTerm: state.searchTerm
+      // userArticles:state.userArticles, userPlaces:state.userPlaces
   }
 }
 

@@ -26,10 +26,10 @@ class MainContainer extends Component {
                   user={this.props.user}
                   goHome={this.props.goHome}
                   changeCurrentArticle={this.props.changeCurrentArticle}
-                  currentArticle={this.props.currentArticle}
-                  findArticleForPlace={this.props.findArticleForPlace}
-                  allArticles={this.props.allArticles}
-                  allPlaces={this.props.allPlaces}
+                  // currentArticle={this.props.currentArticle}
+                  // findArticleForPlace={this.props.findArticleForPlace}
+                  // allArticles={this.props.allArticles}
+                  // allPlaces={this.props.allPlaces}
                   logOut={this.props.logOut}
                 />
                </div>)

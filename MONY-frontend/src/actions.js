@@ -186,8 +186,6 @@ export let saveArticleToUserFromPreview = (article) => {
   }
 }
 
-
-
 export let saveArticleToUser = (article) => {
   return {
     type:"SAVE_ARTICLE_TO_USER",

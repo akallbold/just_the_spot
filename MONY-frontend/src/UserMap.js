@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper, goHome } from "google-maps-react";
-
+import { Map, InfoWindow, Marker, GoogleApiWrapper} from "google-maps-react";
 let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
 
 class UserMap extends Component {
@@ -118,17 +117,6 @@ class UserMap extends Component {
       return <h4 key={article.id} onClick={()=>this.props.changeCurrentArticle(article)}> {article.title} </h4>
     })
   }
-
-  // articleForPlace = () => {
-  //   let relevantPlace = this.props.userPlaces.find(place => {
-  //     return  this.state.selectedPlace.name == place.name
-  //   })
-  //   let relevantArticle = this.props.userArticles.find(article => {
-  //     return relevantPlace.article_id == article.id
-  //   })
-  //   console.log("relevantArticle",relevantArticle)
-  //   return relevantArticle
-  // }
 
   createPlaceList = () => {
     return this.props.userPlaces.map(place => {
