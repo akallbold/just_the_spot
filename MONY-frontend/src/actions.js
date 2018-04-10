@@ -1,5 +1,5 @@
 
-let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
+let APIkey = ""
 
 
 export let changeCurrentArticle = (article) => {
@@ -102,8 +102,6 @@ export function fetchGeocode(place) {
     return place
   })
 }
-
-
 
 export function fetchPlaces() {
   return function (dispatch){
