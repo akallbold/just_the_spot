@@ -30,16 +30,9 @@ class ArticleList extends Component {
 const mapStateToProps = (state) => {
   return {
       allArticles: state.allArticles,
-      // allPlaces:state.allPlaces,
-      // articleSearchArray:state.articleSearchArray,
-      // currentArticle: state.currentArticle,
       searchTerm: state.searchTerm
-      // userArticles:state.userArticles, userPlaces:state.userPlaces
   }
 }
 
-// const mapDispatchtoProps = (dispatch) => {
-//   return {dispatchChangeCurrentArticle: (article) => dispatch(changeCurrentArticle)}
-// }
 
 export default connect(mapStateToProps, {changeCurrentArticle})(ArticleList);
