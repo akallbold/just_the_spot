@@ -52,7 +52,6 @@ class ArticlePreview extends Component {
 }
 
 
-
 const mapStateToProps = (state) => {
   return {
       allArticles: state.allArticles,
