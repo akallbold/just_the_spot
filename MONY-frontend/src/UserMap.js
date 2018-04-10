@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper} from "google-maps-react";
-let APIkey = "AIzaSyDOntKeg8k4VUKehDAFrH2GkGHr_mhJh28"
+let APIkey = ""
 
 class UserMap extends Component {
 
@@ -14,14 +14,13 @@ class UserMap extends Component {
     window.scrollTo(0,0)
   }
 
-
   display = () => {
     if (this.props.userPlaces.length==0){
       return (
         <div>
             <div className="nav" onClick={this.props.goHome}>
               <img className="logo" alt="logo" src="logo.png"/>
-                        <img  src="logout.png" onClick={this.props.logOut}/>
+              <img  src="logout.png" onClick={this.props.logOut}/>
             </div>
           <div className="empty-user-map-container">
             <div className="left-panel-user-map">
@@ -43,7 +42,8 @@ class UserMap extends Component {
             </div>
           <div className="user-map-container">
             <div className="user-map">
-              <h1>My Map!</h1>
+              <p>My Map</p>
+              <button className="btn user-map-add-places" onClick={this.props.goHome}>Add More Places!</button>
               <Map
                 google={this.props.google}
                 initialCenter={this.props.userPlaces.length>0 ?
@@ -61,7 +61,6 @@ class UserMap extends Component {
                   </div>
                 </InfoWindow>
               </Map>
-              <button className="btn user-map-add-places" onClick={this.props.goHome}>Add More Places!</button>
             </div>
             <div className="my-articles-list">
               <p>My Articles</p>
@@ -112,7 +111,6 @@ class UserMap extends Component {
   }
 
   createArticleList = () => {
-    // this.articleForPlace()
     return this.props.userArticles.map(article => {
       return <h4 key={article.id} onClick={()=>this.props.changeCurrentArticle(article)}> {article.title} </h4>
     })
