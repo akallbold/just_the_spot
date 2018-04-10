@@ -3,13 +3,12 @@ import {connect} from "react-redux"
 import {goHome, logOut} from './actions'
 import Article from "./Article"
 
-
-
 class ArticleContainer extends Component {
 
   componentDidMount = () => {
     window.scrollTo(0,0)
   }
+
   render() {
     return (
       <div>
@@ -25,14 +24,5 @@ class ArticleContainer extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     currentPlaces:state.currentPlaces,
-//     currentArticle:state.currentArticle
-//   }
-//
-// }
 
-export default
-// connect(mapStateToProps, { goHome, logOut })
-(ArticleContainer);
+export default (ArticleContainer);
