@@ -36,8 +36,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-// const mapDispatchtoProps = (dispatch) => {
-//   return {dispatchChangeCurrentArticle: (article) => dispatch(changeCurrentArticle)}
-// }
 
 export default connect(mapStateToProps, {})(PlaceList);
