@@ -6,9 +6,6 @@ class PlaceWriteUp extends Component {
   render() {
     return (
       <div className="place-write-up">
-        {/* <h3>{this.props.place.name}</h3>
-        <h4>{this.props.place.address}</h4>
-        <p>{this.props.place.description}</p> */}
       </div>
     );
   }
