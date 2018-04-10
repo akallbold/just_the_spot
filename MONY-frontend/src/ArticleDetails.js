@@ -4,9 +4,6 @@ import {saveArticleToUser, removeArticleFromUser, changeUserMapView} from './act
 
 class ArticleDetails extends Component {
 
-// createArrayWithAllPlaces=()=>{
-//
-// }
 
 buttonDisplay = () => {
   let arrayWithoutArticle = this.props.userArticles.filter(articleObj => {
@@ -27,14 +24,11 @@ buttonDisplay = () => {
 
 }
 
-
   render() {
     return (
       <div className="article-details-mini">
         <h1 className="article-name">{this.props.currentArticle.title}</h1>
         <h4>{this.props.currentArticle.description}</h4>
-
-
         <div>
           <img className="grubstreet" alt="grubstreet logo" src="gs.png"/>
           <p>Thank you to Grubstreet for the delicious photos and scintillating writeups.</p>
@@ -49,7 +43,6 @@ const mapStateToProps = (state) => {
     currentPlaces:state.currentPlaces,
     currentArticle:state.currentArticle,
     userArticles:state.userArticles
-    // userPlaces:state.userPlaces
   }
 
 }
