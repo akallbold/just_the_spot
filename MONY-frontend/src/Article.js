@@ -10,13 +10,11 @@ class Article extends Component {
   componentDidMount(){
     this.props.fetchCurrentPlaces(this.props.currentArticle)
       window.scrollTo(0,0)
-
   }
 
   arrayWithoutArticle = () => this.props.userArticles.filter(articleObj => {
     return articleObj.id !== this.props.currentArticle.id
   })
-
 
   createPlaceDescriptionElements = () =>{
     return this.props.currentPlaces.map(place=>{
@@ -31,8 +29,6 @@ class Article extends Component {
   }
 
   buttonDisplay = () => {
-    console.log("in article userplaces", this.props.userPlaces)
-    console.log("in article userarticles", this.props.userArticles)
     let arrayWithoutArticle = this.props.userArticles.filter(articleObj => {
       return articleObj.id !== this.props.currentArticle.id
     })
