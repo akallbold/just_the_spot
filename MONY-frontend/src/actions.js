@@ -1,5 +1,5 @@
 
-let APIkey = ""
+import API_KEY from "../config"
 
 
 export let changeCurrentArticle = (article) => {

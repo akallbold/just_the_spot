@@ -7,11 +7,11 @@ import {connect} from "react-redux"
 class App extends Component {
 
   createElements = () => {
-    if (this.props.user && localStorage.getItem("token")){
+    // if (this.props.user && localStorage.getItem("token")){
       return <MainContainer/>
-    } else {
-      return <Login/>
-    }
+    // } else {
+      // return <Login/>
+    // }
   }
 
   render() {
