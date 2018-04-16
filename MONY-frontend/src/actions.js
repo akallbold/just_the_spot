@@ -1,5 +1,5 @@
 
-import API_KEY from "../config"
+import API_KEY from "./config.js"
 
 
 export let changeCurrentArticle = (article) => {
@@ -92,7 +92,7 @@ export function fetchCurrentPlaces(article) {
 
 export function fetchGeocode(place) {
   let formattedAddress = place.address.replace(/ /g,"+")
-  return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${formattedAddress}&key=${APIkey}`)
+  return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${formattedAddress}&key=${API_KEY}`)
   .then(response=>response.json())
   .then(data => {
     place.address = data.results[0].formatted_address
