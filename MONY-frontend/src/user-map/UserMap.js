@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper} from "google-maps-react";
-import API_KEY from "./config.js"
+import API_KEY from "../config.js"
 
 class UserMap extends Component {
 

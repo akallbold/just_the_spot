@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
 import Maps from "./Maps"
-import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, saveArticleToUser, changeUserMapView, removeArticleFromUser, goHome} from './actions'
+import {fetchCurrentPlaces, saveStuffToUser, savePlacesToUser, fetchSaveArticleToUser, saveArticleToUser, changeUserMapView, removeArticleFromUser, goHome} from '../actions'
 import ArticleDetails from './ArticleDetails'
-import PlaceWriteUpList from './PlaceWriteUpList'
 
 class Article extends Component {
 

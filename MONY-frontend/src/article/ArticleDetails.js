@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
-import {saveArticleToUser, removeArticleFromUser, changeUserMapView} from './actions'
+import {saveArticleToUser, removeArticleFromUser, changeUserMapView} from '../actions'
 
 class ArticleDetails extends Component {
 

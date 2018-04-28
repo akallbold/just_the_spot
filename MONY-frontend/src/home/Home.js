@@ -31,7 +31,6 @@ class Home extends Component {
             <span className="bored">Bored?</span>
             <br></br>
             <img className="chevron" alt="chevron" src="chevron.png"/>
-
           </div>
         </div>
       </div>

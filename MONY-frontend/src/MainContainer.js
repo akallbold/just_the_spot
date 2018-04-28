@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Login from "./Login"
 //import SearchPanel from "./home/SearchPanel"
-import ArticleContainer from "./ArticleContainer"
-import UserMap from "./UserMap"
+import ArticleContainer from "./article/ArticleContainer"
+import UserMap from "./user-map/UserMap"
 import {connect} from "react-redux"
 import { fetchArticles, fetchPlaces, goHome, changeCurrentArticle, fetchCurrentUser, findArticleForPlace } from "./actions"
 import Home from "./home/Home"

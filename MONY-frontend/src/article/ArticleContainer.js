@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
-import {goHome, logOut} from './actions'
+import {goHome, logOut} from '../actions'
 import Article from "./Article"
 
 class ArticleContainer extends Component {
