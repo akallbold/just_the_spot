@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
-import {changeCurrentArticle} from './actions'
+import {changeCurrentArticle} from '../actions'
 
 class PlacePreview extends Component {
 

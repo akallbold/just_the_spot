@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
-import {changeSearchTerm, changeUserMapView} from "./actions"
+import {changeSearchTerm, changeUserMapView} from "../actions"
 
 class SearchPanel extends Component {
 

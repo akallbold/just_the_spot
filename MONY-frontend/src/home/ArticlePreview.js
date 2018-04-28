@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
-import {changeCurrentArticle, removeArticleFromUser, saveArticleToUserFromPreview, removeArticleFromUserFromPreview} from './actions'
+import {changeCurrentArticle, removeArticleFromUser, saveArticleToUserFromPreview, removeArticleFromUserFromPreview} from '../actions'
 
 
 class ArticlePreview extends Component {

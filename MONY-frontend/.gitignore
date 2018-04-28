@@ -9,7 +9,7 @@ let secretContent= "590997833566-kuu95vtg3i3v07tja76e7ltsd5e981o2.apps.googleuse
 
 # production
 /build
-../src/config.js
+
 
 
 
@@ -23,3 +23,6 @@ let secretContent= "590997833566-kuu95vtg3i3v07tja76e7ltsd5e981o2.apps.googleuse
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+src/config.js

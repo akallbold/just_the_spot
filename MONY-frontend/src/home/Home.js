@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {goHome, logOut} from './actions'
+import {goHome, logOut} from '../actions'
 import {connect} from "react-redux"
 
 
