@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
 
   def create
-    render json: @user, status: 200
+    puts params
+    @user = User.new(name: params[:username], password: params[:password])
+    puts @user
+    if @user.save
+      render json: @user, status: 200
+    else
+      render json: @user.errors, status: 401
+    end
   end
 
   def show

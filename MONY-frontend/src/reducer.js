@@ -29,6 +29,7 @@ const monyReducer = (state = defaultState, action) => {
     case "LOGOUT":
       return {...state, user:{}}
     case "SET_CURRENT_USER":
+    console.log("In reducer", action.payload)
       return {...state, user:action.payload.user}
     case "REMOVE_CURRENT_ARTICLE":
       return {...state, currentArticle:""}

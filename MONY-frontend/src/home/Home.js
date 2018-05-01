@@ -16,12 +16,12 @@ class Home extends Component {
         <div className="nav" onClick={this.props.goHome}>
           <img
             onClick={this.props.goHome} className="logo" alt="logo" src="logo.png"/>
-          <img  src="logout.png" onClick={this.props.logOut}/>
+          <img  alt= "logout button" src="logout.png" onClick={this.props.logOut}/>
         </div>
         <div className="home">
 
           <div className="home-img">
-            <img className="woman-picture" src="woman2.png"/>
+            <img alt ="frightened woman" className="woman-picture" src="woman2.png"/>
           </div>
           <div className="home-text">
             <span className="hungry">Hungry?</span>

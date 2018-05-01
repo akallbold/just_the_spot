@@ -68,11 +68,34 @@ export function fetchLogin(username,password) {
       body: JSON.stringify({ username, password })
     }).then(response => response.json())
       .then(data=>{
+        console.log('Got here!!!')
+        console.log(data)
         localStorage.setItem("token",data.token)
         dispatch({type:"SET_CURRENT_USER", payload:data})
       })
   }
 }
+
+export function fetchCreateUser(username,password) {
+  return function (dispatch){
+    console.log ("user and password", username, password)
+    fetch(`http://localhost:3000/user`, {
+      method:"POST",
+      headers:{ "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    }).then(response => response.json())
+      .then(data=>{
+        console.log('Got here!!!')
+        console.log(data)
+        localStorage.setItem("token",data.token)
+        dispatch({type:"SET_CURRENT_USER", payload:data})
+      }).catch((error)=> {
+        console.log(error)
+      })
+  }
+}
+
+
 
 export function fetchCurrentPlaces(article) {
   return function (dispatch){

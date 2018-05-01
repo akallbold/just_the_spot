@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   post '/login', to: 'auth#login'
   post '/decode', to: 'auth#decode'
+  post '/user', to: 'users#create'
   get '/article', to: 'articles#index'
   post '/users/:id/articles', to: 'user_articles#create'
   get '/users/:id/articles', to: 'user_places#index'

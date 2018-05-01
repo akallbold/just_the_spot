@@ -22,5 +22,4 @@ class SearchView extends Component {
 }
 
 export default
-// connect(mapStateToProps, {})
 (SearchView)
