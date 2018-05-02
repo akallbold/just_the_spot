@@ -14,7 +14,7 @@ class ArticleContainer extends Component {
       <div>
         <div className="nav" onClick={this.props.goHome}>
           <img className="logo" alt="logo" src="logo.png"/>
-          <img  src="logout.png" onClick={this.props.logOut}/>
+          <img  alt= "logout button" src="logout.png" onClick={this.props.logOut}/>
         </div>
         <div className="article-container">
           <Article/>

@@ -38,7 +38,7 @@ const monyReducer = (state = defaultState, action) => {
         return articleObj.id !== action.payload.id
       })
       let userPlacesArray = state.userPlaces.filter(place => {
-        return place.article_id != action.payload.id
+        return place.article_id !== action.payload.id
       })
         return {...state, userArticles:arrayWithoutArticle, userPlaces:userPlacesArray}
     case "REMOVE_ARTICLE_FROM_USER":
@@ -46,7 +46,7 @@ const monyReducer = (state = defaultState, action) => {
       return articleObj.id !== action.payload.id
     })
     let userPlacesArray2 = state.userPlaces.filter(place => {
-      return place.article_id != action.payload.id
+      return place.article_id !== action.payload.id
     })
       return {...state, userArticles:arrayWithoutArticle2, userPlaces: userPlacesArray2}
     case "SAVE_ARTICLES":
@@ -57,7 +57,7 @@ const monyReducer = (state = defaultState, action) => {
                         userPlaces:relevantArray}
     case "SAVE_ARTICLE_TO_USER_FROM_PREVIEW":
       let articlePlaces = state.allPlaces.filter(place => {
-      return place.article_id == action.payload.id
+      return place.article_id === action.payload.id
     })
     let relevantArray2 = state.userPlaces.concat(articlePlaces)
       return {...state, userArticles:[...state.userArticles, action.payload], userPlaces:relevantArray2}

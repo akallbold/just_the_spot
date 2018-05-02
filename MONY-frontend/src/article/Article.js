@@ -73,10 +73,10 @@ class Article extends Component {
         <div className="article-btns">
           {this.buttonDisplay()}
           <span className="btn">
-            <img src="viewmymap4.png"  onClick={this.props.changeUserMapView}/>
+            <img alt= "view map button" src="viewmymap4.png"  onClick={this.props.changeUserMapView}/>
           </span>
           <span className="btn">
-            <img src="goback.png"  onClick={this.props.goHome}/>
+            <img alt= "go back button" src="goback.png"  onClick={this.props.goHome}/>
           </span>
         </div>
         <div className="place-descriptions">
