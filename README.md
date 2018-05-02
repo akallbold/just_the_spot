@@ -14,3 +14,6 @@ BACKEND
 - used b-crypt to encrypt user passwords and JWT for token management
 - used Nokogiri to scrape Grubstreet
 - used Ruby on Rails, Active-Record, and PostgreSQL to manage database
+
+Live version can be found here: justthespot.info
+Demo video can be found here: https://www.youtube.com/watch?v=fruqof0-SaE
