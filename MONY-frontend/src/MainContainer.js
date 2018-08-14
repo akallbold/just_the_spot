@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Login from "./Login"
-//import SearchPanel from "./home/SearchPanel"
 import ArticleContainer from "./article/ArticleContainer"
 import UserMap from "./user-map/UserMap"
 import {connect} from "react-redux"

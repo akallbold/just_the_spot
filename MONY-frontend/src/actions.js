@@ -68,6 +68,7 @@ export function fetchLogin(username,password) {
       body: JSON.stringify({ username, password })
     }).then(response => response.json())
       .then(data=>{
+        console.log("data",data)
         localStorage.setItem("token",data.token)
         dispatch({type:"SET_CURRENT_USER", payload:data})
       })
